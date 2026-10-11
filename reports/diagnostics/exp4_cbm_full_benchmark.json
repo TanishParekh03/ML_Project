@@ -1,0 +1,772 @@
+{
+  "sweep_75": {
+    "clean": {
+      "acc_static": 0.9758511480601741,
+      "acc_adapt": 0.97458432304038,
+      "acc_gated": 0.9758511480601741
+    },
+    "mca_static_75": 0.8425125362892585,
+    "mca_adapt_75": 0.8849810855986627,
+    "mca_gated_75": 0.885041963578781,
+    "mca_gain_adapt": 0.04246854930940425,
+    "mca_gain_gated": 0.04252942728952247,
+    "conditions": [
+      {
+        "corruption": "gaussian_noise",
+        "severity": 1,
+        "static_mean": 0.9465294272895224,
+        "static_std": 0.0008824625757350207,
+        "adapt_mean": 0.9579836368434943,
+        "adapt_std": 0.0008031208263237032,
+        "gated_mean": 0.9579836368434943,
+        "gain": 0.011454209553971917
+      },
+      {
+        "corruption": "gaussian_noise",
+        "severity": 2,
+        "static_mean": 0.875771971496437,
+        "static_std": 0.001455643413368987,
+        "adapt_mean": 0.920665083135392,
+        "adapt_std": 0.0020040692010102547,
+        "gated_mean": 0.920665083135392,
+        "gain": 0.04489311163895493
+      },
+      {
+        "corruption": "gaussian_noise",
+        "severity": 3,
+        "static_mean": 0.7650567432040116,
+        "static_std": 0.0016166157646992313,
+        "adapt_mean": 0.8675640010556874,
+        "adapt_std": 0.002349942390029226,
+        "gated_mean": 0.8675640010556874,
+        "gain": 0.1025072578516758
+      },
+      {
+        "corruption": "gaussian_noise",
+        "severity": 4,
+        "static_mean": 0.6182633940353655,
+        "static_std": 0.002716216485672998,
+        "adapt_mean": 0.7891528107680127,
+        "adapt_std": 0.002189438390283033,
+        "gated_mean": 0.7891528107680127,
+        "gain": 0.17088941673264724
+      },
+      {
+        "corruption": "gaussian_noise",
+        "severity": 5,
+        "static_mean": 0.5000791765637371,
+        "static_std": 0.0013358723393870674,
+        "adapt_mean": 0.7104249142253893,
+        "adapt_std": 0.0015866073755807922,
+        "gated_mean": 0.7104249142253893,
+        "gain": 0.2103457376616522
+      },
+      {
+        "corruption": "shot_noise",
+        "severity": 1,
+        "static_mean": 0.9441805225653207,
+        "static_std": 0.0009050635101336851,
+        "adapt_mean": 0.9606756400105568,
+        "adapt_std": 0.0018334499269420225,
+        "gated_mean": 0.9606756400105568,
+        "gain": 0.01649511744523613
+      },
+      {
+        "corruption": "shot_noise",
+        "severity": 2,
+        "static_mean": 0.8945632092900501,
+        "static_std": 0.00022703418493121258,
+        "adapt_mean": 0.9428609131697018,
+        "adapt_std": 0.0003253847454721209,
+        "gated_mean": 0.9428609131697018,
+        "gain": 0.04829770387965171
+      },
+      {
+        "corruption": "shot_noise",
+        "severity": 3,
+        "static_mean": 0.7960675640010558,
+        "static_std": 0.0018928921696533397,
+        "adapt_mean": 0.8997096859329637,
+        "adapt_std": 0.0014344342297916365,
+        "gated_mean": 0.8997096859329637,
+        "gain": 0.10364212193190792
+      },
+      {
+        "corruption": "shot_noise",
+        "severity": 4,
+        "static_mean": 0.651675903932436,
+        "static_std": 0.0014689807389892638,
+        "adapt_mean": 0.8348640802322512,
+        "adapt_std": 0.003155384469216993,
+        "gated_mean": 0.8348640802322512,
+        "gain": 0.1831881762998152
+      },
+      {
+        "corruption": "shot_noise",
+        "severity": 5,
+        "static_mean": 0.47529691211401426,
+        "static_std": 0.0026028103638826533,
+        "adapt_mean": 0.7415940881499076,
+        "adapt_std": 0.0010022083687541525,
+        "gated_mean": 0.7415940881499076,
+        "gain": 0.2662971760358933
+      },
+      {
+        "corruption": "impulse_noise",
+        "severity": 1,
+        "static_mean": 0.7976510952757984,
+        "static_std": 0.0001492967603455231,
+        "adapt_mean": 0.8660332541567697,
+        "adapt_std": 0.001759787076080175,
+        "gated_mean": 0.8660332541567697,
+        "gain": 0.06838215888097132
+      },
+      {
+        "corruption": "impulse_noise",
+        "severity": 2,
+        "static_mean": 0.6874373185537083,
+        "static_std": 0.0028710527851089503,
+        "adapt_mean": 0.818580100290314,
+        "adapt_std": 0.0012339582715820748,
+        "gated_mean": 0.818580100290314,
+        "gain": 0.13114278173660576
+      },
+      {
+        "corruption": "impulse_noise",
+        "severity": 3,
+        "static_mean": 0.606914753233043,
+        "static_std": 0.0008437248542172597,
+        "adapt_mean": 0.7852203747690684,
+        "adapt_std": 0.003033150255699902,
+        "gated_mean": 0.7852203747690684,
+        "gain": 0.17830562153602536
+      },
+      {
+        "corruption": "impulse_noise",
+        "severity": 4,
+        "static_mean": 0.487358141989971,
+        "static_std": 0.0010843303554591854,
+        "adapt_mean": 0.7167854315122724,
+        "adapt_std": 0.0014570782519759834,
+        "gated_mean": 0.7167854315122724,
+        "gain": 0.22942728952230135
+      },
+      {
+        "corruption": "impulse_noise",
+        "severity": 5,
+        "static_mean": 0.38186856690419635,
+        "static_std": 0.001991517495900069,
+        "adapt_mean": 0.648324096067564,
+        "adapt_std": 0.0026813735565349587,
+        "gated_mean": 0.648324096067564,
+        "gain": 0.2664555291633677
+      },
+      {
+        "corruption": "speckle_noise",
+        "severity": 1,
+        "static_mean": 0.9733174980205859,
+        "static_std": 0.0005745986027204332,
+        "adapt_mean": 0.9734230667722353,
+        "adapt_std": 0.00026126933060470654,
+        "gated_mean": 0.9735550277117974,
+        "gain": 0.00010556875164946522
+      },
+      {
+        "corruption": "speckle_noise",
+        "severity": 2,
+        "static_mean": 0.9665347057271046,
+        "static_std": 0.0003950020994219033,
+        "adapt_mean": 0.9707574557930853,
+        "adapt_std": 0.00018662095043190386,
+        "gated_mean": 0.9707574557930853,
+        "gain": 0.004222750065980607
+      },
+      {
+        "corruption": "speckle_noise",
+        "severity": 3,
+        "static_mean": 0.9377408287147005,
+        "static_std": 0.002078122954344633,
+        "adapt_mean": 0.9621008181578253,
+        "adapt_std": 0.0010939235564034052,
+        "gated_mean": 0.9621008181578253,
+        "gain": 0.024359989443124785
+      },
+      {
+        "corruption": "speckle_noise",
+        "severity": 4,
+        "static_mean": 0.8883346529427291,
+        "static_std": 0.0006278900635191335,
+        "adapt_mean": 0.9399049881235154,
+        "adapt_std": 0.0011797042300674338,
+        "gated_mean": 0.9399049881235154,
+        "gain": 0.05157033518078635
+      },
+      {
+        "corruption": "speckle_noise",
+        "severity": 5,
+        "static_mean": 0.8271839535497493,
+        "static_std": 0.0009353415226534563,
+        "adapt_mean": 0.9093164423330693,
+        "adapt_std": 0.0012557801270383275,
+        "gated_mean": 0.9093164423330693,
+        "gain": 0.08213248878332002
+      },
+      {
+        "corruption": "defocus_blur",
+        "severity": 1,
+        "static_mean": 0.9760095011876485,
+        "static_std": 0.0,
+        "adapt_mean": 0.9752969121140143,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9760095011876485,
+        "gain": -0.0007125890736342511
+      },
+      {
+        "corruption": "defocus_blur",
+        "severity": 2,
+        "static_mean": 0.975217735550277,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9742676167854315,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9742676167854315,
+        "gain": -0.00095011876484552
+      },
+      {
+        "corruption": "defocus_blur",
+        "severity": 3,
+        "static_mean": 0.9687252573238322,
+        "static_std": 0.0,
+        "adapt_mean": 0.9699129057798892,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9699129057798892,
+        "gain": 0.001187648456057011
+      },
+      {
+        "corruption": "defocus_blur",
+        "severity": 4,
+        "static_mean": 0.9523357086302454,
+        "static_std": 0.0,
+        "adapt_mean": 0.9585114806017417,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9585114806017417,
+        "gain": 0.006175771971496324
+      },
+      {
+        "corruption": "defocus_blur",
+        "severity": 5,
+        "static_mean": 0.8935866983372923,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9153602533650039,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9153602533650039,
+        "gain": 0.02177355502771161
+      },
+      {
+        "corruption": "motion_blur",
+        "severity": 1,
+        "static_mean": 0.9752705199261019,
+        "static_std": 0.0002985935206910462,
+        "adapt_mean": 0.9738981261546583,
+        "adapt_std": 0.0002612693306046654,
+        "gated_mean": 0.9752705199261019,
+        "gain": -0.001372393771443603
+      },
+      {
+        "corruption": "motion_blur",
+        "severity": 2,
+        "static_mean": 0.9726576933227764,
+        "static_std": 0.00047652335933669784,
+        "adapt_mean": 0.9720506730007918,
+        "adapt_std": 0.00029625157456644724,
+        "gated_mean": 0.9720506730007918,
+        "gain": -0.0006070203219845638
+      },
+      {
+        "corruption": "motion_blur",
+        "severity": 3,
+        "static_mean": 0.9643441541303774,
+        "static_std": 0.000579427247297444,
+        "adapt_mean": 0.9647400369490632,
+        "adapt_std": 0.0007091596116412857,
+        "gated_mean": 0.9647400369490632,
+        "gain": 0.0003958828186857444
+      },
+      {
+        "corruption": "motion_blur",
+        "severity": 4,
+        "static_mean": 0.9483240960675641,
+        "static_std": 0.0013063466530234319,
+        "adapt_mean": 0.9497492742148324,
+        "adapt_std": 0.0009172946527834729,
+        "gated_mean": 0.9497492742148324,
+        "gain": 0.00142517814726828
+      },
+      {
+        "corruption": "motion_blur",
+        "severity": 5,
+        "static_mean": 0.8783320137239378,
+        "static_std": 0.0014300572377032568,
+        "adapt_mean": 0.8858537872789655,
+        "adapt_std": 0.0010309857474069583,
+        "gated_mean": 0.8858537872789655,
+        "gain": 0.0075217735550277
+      },
+      {
+        "corruption": "zoom_blur",
+        "severity": 1,
+        "static_mean": 0.9754552652414885,
+        "static_std": 0.0,
+        "adapt_mean": 0.976326207442597,
+        "adapt_std": 0.0,
+        "gated_mean": 0.976326207442597,
+        "gain": 0.0008709422011085044
+      },
+      {
+        "corruption": "zoom_blur",
+        "severity": 2,
+        "static_mean": 0.9767220902612826,
+        "static_std": 0.0,
+        "adapt_mean": 0.9764053840063341,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9764053840063341,
+        "gain": -0.0003167062549485067
+      },
+      {
+        "corruption": "zoom_blur",
+        "severity": 3,
+        "static_mean": 0.9755344418052255,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.975059382422803,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.975059382422803,
+        "gain": -0.000475059382422538
+      },
+      {
+        "corruption": "zoom_blur",
+        "severity": 4,
+        "static_mean": 0.9753760886777515,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9749802058590658,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9749802058590658,
+        "gain": -0.0003958828186857444
+      },
+      {
+        "corruption": "zoom_blur",
+        "severity": 5,
+        "static_mean": 0.9764845605700713,
+        "static_std": 0.0,
+        "adapt_mean": 0.9749802058590658,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9749802058590658,
+        "gain": -0.0015043547110055178
+      },
+      {
+        "corruption": "gaussian_blur",
+        "severity": 1,
+        "static_mean": 0.9760886777513856,
+        "static_std": 0.0,
+        "adapt_mean": 0.975217735550277,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9760886777513856,
+        "gain": -0.0008709422011086154
+      },
+      {
+        "corruption": "gaussian_blur",
+        "severity": 2,
+        "static_mean": 0.9752969121140143,
+        "static_std": 0.0,
+        "adapt_mean": 0.9748218527315915,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9748218527315915,
+        "gain": -0.00047505938242276
+      },
+      {
+        "corruption": "gaussian_blur",
+        "severity": 3,
+        "static_mean": 0.9726840855106889,
+        "static_std": 0.0,
+        "adapt_mean": 0.9737925574030087,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9737925574030087,
+        "gain": 0.0011084718923198844
+      },
+      {
+        "corruption": "gaussian_blur",
+        "severity": 4,
+        "static_mean": 0.9648456057007125,
+        "static_std": 0.0,
+        "adapt_mean": 0.9657957244655582,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9657957244655582,
+        "gain": 0.0009501187648456311
+      },
+      {
+        "corruption": "gaussian_blur",
+        "severity": 5,
+        "static_mean": 0.9250989707046714,
+        "static_std": 0.0,
+        "adapt_mean": 0.9442596991290578,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9442596991290578,
+        "gain": 0.01916072842438643
+      },
+      {
+        "corruption": "glass_blur",
+        "severity": 1,
+        "static_mean": 0.9693322776458168,
+        "static_std": 0.0010530449904069766,
+        "adapt_mean": 0.9697809448403273,
+        "adapt_std": 0.0001975010497109813,
+        "gated_mean": 0.9699129057798892,
+        "gain": 0.0004486671945105325
+      },
+      {
+        "corruption": "glass_blur",
+        "severity": 2,
+        "static_mean": 0.9614146212721034,
+        "static_std": 0.00045406836986237355,
+        "adapt_mean": 0.9622327790973872,
+        "adapt_std": 0.00040372284351486806,
+        "gated_mean": 0.9622327790973872,
+        "gain": 0.0008181578252838273
+      },
+      {
+        "corruption": "glass_blur",
+        "severity": 3,
+        "static_mean": 0.9530219055159673,
+        "static_std": 0.0015627206485180718,
+        "adapt_mean": 0.9549749274214833,
+        "adapt_std": 0.0008031208263237032,
+        "gated_mean": 0.9549749274214833,
+        "gain": 0.0019530219055159392
+      },
+      {
+        "corruption": "glass_blur",
+        "severity": 4,
+        "static_mean": 0.905384006334125,
+        "static_std": 0.0011028019221840041,
+        "adapt_mean": 0.909844286091317,
+        "adapt_std": 0.0004400457112835289,
+        "gated_mean": 0.909844286091317,
+        "gain": 0.004460279757191987
+      },
+      {
+        "corruption": "glass_blur",
+        "severity": 5,
+        "static_mean": 0.7808920559514384,
+        "static_std": 0.0006144337147967001,
+        "adapt_mean": 0.7859857482185273,
+        "adapt_std": 0.002338055908192115,
+        "gated_mean": 0.7859857482185273,
+        "gain": 0.0050936922670888896
+      },
+      {
+        "corruption": "brightness",
+        "severity": 1,
+        "static_mean": 0.9730007917656374,
+        "static_std": 0.0,
+        "adapt_mean": 0.9738717339667459,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9738717339667459,
+        "gain": 0.0008709422011085044
+      },
+      {
+        "corruption": "brightness",
+        "severity": 2,
+        "static_mean": 0.9640538400633413,
+        "static_std": 0.0,
+        "adapt_mean": 0.9670625494853523,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9670625494853523,
+        "gain": 0.0030087094220110355
+      },
+      {
+        "corruption": "brightness",
+        "severity": 3,
+        "static_mean": 0.9499604117181314,
+        "static_std": 0.0,
+        "adapt_mean": 0.9551860649247823,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9551860649247823,
+        "gain": 0.005225653206650915
+      },
+      {
+        "corruption": "brightness",
+        "severity": 4,
+        "static_mean": 0.929057798891528,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9394299287410927,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9394299287410927,
+        "gain": 0.010372129849564704
+      },
+      {
+        "corruption": "brightness",
+        "severity": 5,
+        "static_mean": 0.8935866983372923,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9121140142517815,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9121140142517815,
+        "gain": 0.018527315914489195
+      },
+      {
+        "corruption": "contrast",
+        "severity": 1,
+        "static_mean": 0.9741092636579572,
+        "static_std": 0.0,
+        "adapt_mean": 0.9742676167854315,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9742676167854315,
+        "gain": 0.00015835312747425334
+      },
+      {
+        "corruption": "contrast",
+        "severity": 2,
+        "static_mean": 0.971575613618369,
+        "static_std": 0.0,
+        "adapt_mean": 0.9736342042755345,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9736342042755345,
+        "gain": 0.0020585906571655155
+      },
+      {
+        "corruption": "contrast",
+        "severity": 3,
+        "static_mean": 0.9608076009501186,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9718923198733175,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9718923198733175,
+        "gain": 0.011084718923198844
+      },
+      {
+        "corruption": "contrast",
+        "severity": 4,
+        "static_mean": 0.9316706254948536,
+        "static_std": 0.0,
+        "adapt_mean": 0.9656373713380839,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9656373713380839,
+        "gain": 0.03396674584323034
+      },
+      {
+        "corruption": "contrast",
+        "severity": 5,
+        "static_mean": 0.8446555819477434,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9467933491686461,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9467933491686461,
+        "gain": 0.10213776722090273
+      },
+      {
+        "corruption": "fog",
+        "severity": 1,
+        "static_mean": 0.973950910530483,
+        "static_std": 0.0,
+        "adapt_mean": 0.9746634996041171,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9746634996041171,
+        "gain": 0.00071258907363414
+      },
+      {
+        "corruption": "fog",
+        "severity": 2,
+        "static_mean": 0.9678543151227238,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9744259699129058,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9744259699129058,
+        "gain": 0.006571654790181958
+      },
+      {
+        "corruption": "fog",
+        "severity": 3,
+        "static_mean": 0.9356294536817101,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9738717339667459,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9738717339667459,
+        "gain": 0.038242280285035735
+      },
+      {
+        "corruption": "fog",
+        "severity": 4,
+        "static_mean": 0.8474267616785432,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9726049089469516,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9726049089469516,
+        "gain": 0.12517814726840837
+      },
+      {
+        "corruption": "fog",
+        "severity": 5,
+        "static_mean": 0.6068091844813935,
+        "static_std": 0.0,
+        "adapt_mean": 0.9658749010292954,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9658749010292954,
+        "gain": 0.35906571654790187
+      },
+      {
+        "corruption": "pixelate",
+        "severity": 1,
+        "static_mean": 0.9660332541567694,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9653206650831354,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9660332541567694,
+        "gain": -0.000712589073634029
+      },
+      {
+        "corruption": "pixelate",
+        "severity": 2,
+        "static_mean": 0.9730007917656374,
+        "static_std": 0.0,
+        "adapt_mean": 0.9714964370546318,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9714964370546318,
+        "gain": -0.0015043547110055178
+      },
+      {
+        "corruption": "pixelate",
+        "severity": 3,
+        "static_mean": 0.9429928741092638,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9476642913697546,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9476642913697546,
+        "gain": 0.004671417260490807
+      },
+      {
+        "corruption": "pixelate",
+        "severity": 4,
+        "static_mean": 0.864449722882027,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.8816310372129849,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.8816310372129849,
+        "gain": 0.01718131433095782
+      },
+      {
+        "corruption": "pixelate",
+        "severity": 5,
+        "static_mean": 0.5965954077593032,
+        "static_std": 0.0,
+        "adapt_mean": 0.6305621536025336,
+        "adapt_std": 0.0,
+        "gated_mean": 0.6305621536025336,
+        "gain": 0.03396674584323045
+      },
+      {
+        "corruption": "jpeg_compression",
+        "severity": 1,
+        "static_mean": 0.9698337292161522,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.969200316706255,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9698337292161522,
+        "gain": -0.0006334125098972354
+      },
+      {
+        "corruption": "jpeg_compression",
+        "severity": 2,
+        "static_mean": 0.9636579572446555,
+        "static_std": 0.0,
+        "adapt_mean": 0.96326207442597,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.96326207442597,
+        "gain": -0.00039588281868552233
+      },
+      {
+        "corruption": "jpeg_compression",
+        "severity": 3,
+        "static_mean": 0.9498020585906571,
+        "static_std": 0.0,
+        "adapt_mean": 0.9513855898653999,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9513855898653999,
+        "gain": 0.0015835312747427555
+      },
+      {
+        "corruption": "jpeg_compression",
+        "severity": 4,
+        "static_mean": 0.9236737925574031,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9279493269992082,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9279493269992082,
+        "gain": 0.004275534441805062
+      },
+      {
+        "corruption": "jpeg_compression",
+        "severity": 5,
+        "static_mean": 0.8410926365795725,
+        "static_std": 0.0,
+        "adapt_mean": 0.8499604117181314,
+        "adapt_std": 0.0,
+        "gated_mean": 0.8499604117181314,
+        "gain": 0.008867775138558964
+      },
+      {
+        "corruption": "elastic_transform",
+        "severity": 1,
+        "static_mean": 0.7987331749802058,
+        "static_std": 0.0014613743151129256,
+        "adapt_mean": 0.8155449986803905,
+        "adapt_std": 0.0027521370633367473,
+        "gated_mean": 0.8155449986803905,
+        "gain": 0.016811823700184747
+      },
+      {
+        "corruption": "elastic_transform",
+        "severity": 2,
+        "static_mean": 0.44241224597519135,
+        "static_std": 0.0008777138637274056,
+        "adapt_mean": 0.4802586434415413,
+        "adapt_std": 0.003408783767901309,
+        "gated_mean": 0.4802586434415413,
+        "gain": 0.037846397466349935
+      },
+      {
+        "corruption": "elastic_transform",
+        "severity": 3,
+        "static_mean": 0.24096067564001056,
+        "static_std": 0.002508230006971066,
+        "adapt_mean": 0.2821588809712325,
+        "adapt_std": 0.0028344276000704873,
+        "gated_mean": 0.2821588809712325,
+        "gain": 0.041198205331221927
+      },
+      {
+        "corruption": "elastic_transform",
+        "severity": 4,
+        "static_mean": 0.13167062549485353,
+        "static_std": 0.001972540189079411,
+        "adapt_mean": 0.15626814462918978,
+        "adapt_std": 0.002045692517822759,
+        "gated_mean": 0.15626814462918978,
+        "gain": 0.02459751913433625
+      },
+      {
+        "corruption": "elastic_transform",
+        "severity": 5,
+        "static_mean": 0.06912114014251781,
+        "static_std": 0.0009165349883444368,
+        "adapt_mean": 0.08954869358669833,
+        "adapt_std": 0.0012977873690308006,
+        "gated_mean": 0.08954869358669833,
+        "gain": 0.020427553444180513
+      }
+    ]
+  },
+  "batch_size_sweep": {
+    "bs_1": 0.49873317498020586,
+    "bs_8": 0.6673000791765638,
+    "bs_32": 0.6988915281076801,
+    "bs_128": 0.7102929532858274
+  }
+}

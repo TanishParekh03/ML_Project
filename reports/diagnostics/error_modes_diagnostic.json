@@ -1,0 +1,120 @@
+{
+  "total_errors_evaluated": 46770,
+  "within_group_errors": 24927,
+  "cross_group_errors": 21843,
+  "overall_within_ratio_percent": 53.29698524695318,
+  "overall_cross_ratio_percent": 46.70301475304682,
+  "total_rescued_by_ocs": 861,
+  "total_harmed_by_ocs": 1086,
+  "net_gain_samples": -225,
+  "per_condition": {
+    "gaussian_noise_sev3": {
+      "raw_accuracy": 0.7627870150435471,
+      "ocs_accuracy": 0.7596199524940618,
+      "delta_accuracy": -0.003167062549485289,
+      "total_errors": 2996,
+      "within_group_errors": 1781,
+      "cross_group_errors": 1215,
+      "within_ratio_percent": 59.445927903871834,
+      "cross_ratio_percent": 40.554072096128166,
+      "rescued_samples": 40,
+      "harmed_samples": 80
+    },
+    "gaussian_noise_sev4": {
+      "raw_accuracy": 0.6187648456057007,
+      "ocs_accuracy": 0.6143309580364212,
+      "delta_accuracy": -0.004433887569279427,
+      "total_errors": 4815,
+      "within_group_errors": 2477,
+      "cross_group_errors": 2338,
+      "within_ratio_percent": 51.443406022845274,
+      "cross_ratio_percent": 48.556593977154726,
+      "rescued_samples": 64,
+      "harmed_samples": 120
+    },
+    "gaussian_noise_sev5": {
+      "raw_accuracy": 0.5004750593824228,
+      "ocs_accuracy": 0.4978622327790974,
+      "delta_accuracy": -0.0026128266033253467,
+      "total_errors": 6309,
+      "within_group_errors": 2946,
+      "cross_group_errors": 3363,
+      "within_ratio_percent": 46.69519733713742,
+      "cross_ratio_percent": 53.304802662862585,
+      "rescued_samples": 89,
+      "harmed_samples": 122
+    },
+    "shot_noise_sev3": {
+      "raw_accuracy": 0.798258115597783,
+      "ocs_accuracy": 0.7967537608867775,
+      "delta_accuracy": -0.0015043547110055178,
+      "total_errors": 2548,
+      "within_group_errors": 1819,
+      "cross_group_errors": 729,
+      "within_ratio_percent": 71.38932496075353,
+      "cross_ratio_percent": 28.61067503924647,
+      "rescued_samples": 46,
+      "harmed_samples": 65
+    },
+    "shot_noise_sev4": {
+      "raw_accuracy": 0.6565320665083135,
+      "ocs_accuracy": 0.6516231195566112,
+      "delta_accuracy": -0.004908946951702298,
+      "total_errors": 4338,
+      "within_group_errors": 2710,
+      "cross_group_errors": 1628,
+      "within_ratio_percent": 62.47118487782388,
+      "cross_ratio_percent": 37.52881512217612,
+      "rescued_samples": 88,
+      "harmed_samples": 150
+    },
+    "shot_noise_sev5": {
+      "raw_accuracy": 0.472763262074426,
+      "ocs_accuracy": 0.4717339667458432,
+      "delta_accuracy": -0.0010292953285827577,
+      "total_errors": 6659,
+      "within_group_errors": 3550,
+      "cross_group_errors": 3109,
+      "within_ratio_percent": 53.31130800420484,
+      "cross_ratio_percent": 46.68869199579516,
+      "rescued_samples": 159,
+      "harmed_samples": 172
+    },
+    "impulse_noise_sev3": {
+      "raw_accuracy": 0.6116389548693587,
+      "ocs_accuracy": 0.6078384798099763,
+      "delta_accuracy": -0.0038004750593824133,
+      "total_errors": 4905,
+      "within_group_errors": 2779,
+      "cross_group_errors": 2126,
+      "within_ratio_percent": 56.65647298674822,
+      "cross_ratio_percent": 43.34352701325178,
+      "rescued_samples": 78,
+      "harmed_samples": 126
+    },
+    "impulse_noise_sev4": {
+      "raw_accuracy": 0.4901029295328583,
+      "ocs_accuracy": 0.4901821060965954,
+      "delta_accuracy": 7.917656373712667e-05,
+      "total_errors": 6440,
+      "within_group_errors": 3334,
+      "cross_group_errors": 3106,
+      "within_ratio_percent": 51.77018633540372,
+      "cross_ratio_percent": 48.22981366459627,
+      "rescued_samples": 109,
+      "harmed_samples": 108
+    },
+    "impulse_noise_sev5": {
+      "raw_accuracy": 0.38558986539984164,
+      "ocs_accuracy": 0.38915281076801267,
+      "delta_accuracy": 0.0035629453681710332,
+      "total_errors": 7760,
+      "within_group_errors": 3531,
+      "cross_group_errors": 4229,
+      "within_ratio_percent": 45.50257731958763,
+      "cross_ratio_percent": 54.49742268041236,
+      "rescued_samples": 188,
+      "harmed_samples": 143
+    }
+  }
+}

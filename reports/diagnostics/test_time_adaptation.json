@@ -1,0 +1,144 @@
+{
+  "mean_static_acc": 0.6957297439957771,
+  "mean_bn_adapt_acc": 0.8297070467141726,
+  "mean_bn_ocs_acc": 0.8298865135919768,
+  "mean_gain_bn_adapt": 0.13397730271839547,
+  "mean_gain_bn_ocs": 0.1341567695961997,
+  "results": [
+    {
+      "corruption": "gaussian_noise",
+      "severity": 1,
+      "static_acc": 0.9471892319873317,
+      "bn_adapt_acc": 0.9581155977830562,
+      "bn_ocs_acc": 0.9583531274742676,
+      "gain_bn_adapt": 0.01092636579572448,
+      "gain_bn_ocs": 0.01116389548693586
+    },
+    {
+      "corruption": "gaussian_noise",
+      "severity": 2,
+      "static_acc": 0.8752177355502772,
+      "bn_adapt_acc": 0.920665083135392,
+      "bn_ocs_acc": 0.920110847189232,
+      "gain_bn_adapt": 0.04544734758511482,
+      "gain_bn_ocs": 0.04489311163895482
+    },
+    {
+      "corruption": "gaussian_noise",
+      "severity": 3,
+      "static_acc": 0.7666666666666667,
+      "bn_adapt_acc": 0.8673792557403008,
+      "bn_ocs_acc": 0.8679334916864608,
+      "gain_bn_adapt": 0.10071258907363412,
+      "gain_bn_ocs": 0.10126682501979412
+    },
+    {
+      "corruption": "gaussian_noise",
+      "severity": 4,
+      "static_acc": 0.6191607284243864,
+      "bn_adapt_acc": 0.790498812351544,
+      "bn_ocs_acc": 0.790498812351544,
+      "gain_bn_adapt": 0.17133808392715755,
+      "gain_bn_ocs": 0.17133808392715755
+    },
+    {
+      "corruption": "gaussian_noise",
+      "severity": 5,
+      "static_acc": 0.5016627078384798,
+      "bn_adapt_acc": 0.7118764845605701,
+      "bn_ocs_acc": 0.7113222486144102,
+      "gain_bn_adapt": 0.2102137767220903,
+      "gain_bn_ocs": 0.2096595407759304
+    },
+    {
+      "corruption": "shot_noise",
+      "severity": 1,
+      "static_acc": 0.9470308788598575,
+      "bn_adapt_acc": 0.9615993665874901,
+      "bn_ocs_acc": 0.9617577197149644,
+      "gain_bn_adapt": 0.01456848772763264,
+      "gain_bn_ocs": 0.014726840855106893
+    },
+    {
+      "corruption": "shot_noise",
+      "severity": 2,
+      "static_acc": 0.8948535233570863,
+      "bn_adapt_acc": 0.9415676959619953,
+      "bn_ocs_acc": 0.9409342834520982,
+      "gain_bn_adapt": 0.046714172604908955,
+      "gain_bn_ocs": 0.04608076009501183
+    },
+    {
+      "corruption": "shot_noise",
+      "severity": 3,
+      "static_acc": 0.7984164687252573,
+      "bn_adapt_acc": 0.8987331749802059,
+      "bn_ocs_acc": 0.8978622327790974,
+      "gain_bn_adapt": 0.1003167062549486,
+      "gain_bn_ocs": 0.09944576405384009
+    },
+    {
+      "corruption": "shot_noise",
+      "severity": 4,
+      "static_acc": 0.6519398258115597,
+      "bn_adapt_acc": 0.8318289786223277,
+      "bn_ocs_acc": 0.8318289786223277,
+      "gain_bn_adapt": 0.179889152810768,
+      "gain_bn_ocs": 0.179889152810768
+    },
+    {
+      "corruption": "shot_noise",
+      "severity": 5,
+      "static_acc": 0.47038796516231196,
+      "bn_adapt_acc": 0.7379255740300871,
+      "bn_ocs_acc": 0.7387173396674585,
+      "gain_bn_adapt": 0.2675376088677751,
+      "gain_bn_ocs": 0.2683293745051465
+    },
+    {
+      "corruption": "impulse_noise",
+      "severity": 1,
+      "static_acc": 0.7997624703087886,
+      "bn_adapt_acc": 0.8627870150435472,
+      "bn_ocs_acc": 0.86270783847981,
+      "gain_bn_adapt": 0.0630245447347586,
+      "gain_bn_ocs": 0.06294536817102148
+    },
+    {
+      "corruption": "impulse_noise",
+      "severity": 2,
+      "static_acc": 0.6855898653998417,
+      "bn_adapt_acc": 0.8152810768012668,
+      "bn_ocs_acc": 0.8162311955661125,
+      "gain_bn_adapt": 0.12969121140142514,
+      "gain_bn_ocs": 0.13064133016627077
+    },
+    {
+      "corruption": "impulse_noise",
+      "severity": 3,
+      "static_acc": 0.6060965954077593,
+      "bn_adapt_acc": 0.7823436262866191,
+      "bn_ocs_acc": 0.7833729216152019,
+      "gain_bn_adapt": 0.17624703087885984,
+      "gain_bn_ocs": 0.1772763262074426
+    },
+    {
+      "corruption": "impulse_noise",
+      "severity": 4,
+      "static_acc": 0.4885985748218527,
+      "bn_adapt_acc": 0.7184481393507521,
+      "bn_ocs_acc": 0.7182106096595408,
+      "gain_bn_adapt": 0.22984956452889943,
+      "gain_bn_ocs": 0.22961203483768805
+    },
+    {
+      "corruption": "impulse_noise",
+      "severity": 5,
+      "static_acc": 0.3833729216152019,
+      "bn_adapt_acc": 0.6465558194774347,
+      "bn_ocs_acc": 0.6484560570071259,
+      "gain_bn_adapt": 0.26318289786223276,
+      "gain_bn_ocs": 0.265083135391924
+    }
+  ]
+}

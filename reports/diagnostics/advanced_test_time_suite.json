@@ -1,0 +1,166 @@
+{
+  "mean_raw_acc": 0.5877892143925398,
+  "mean_gated_ocs_acc": 0.5896102753584939,
+  "mean_bn_adapt_acc": 0.7765285475499252,
+  "mean_bn_gated_ocs_acc": 0.7771619600598224,
+  "mean_gain_bn_adapt": 0.18873933315738534,
+  "mean_gain_bn_gated_ocs": 0.18937274566728257,
+  "auroc_error_detection": {
+    "auroc_msp": 0.8787498217806669,
+    "auroc_ocs": 0.8519779121716217,
+    "auroc_hybrid_msp_plus_ocs": 0.873949256101247
+  },
+  "top_within_group_error_classes": [
+    {
+      "class_id": 3,
+      "class_name": "Speed limit (60km/h)",
+      "count": 3685
+    },
+    {
+      "class_id": 4,
+      "class_name": "Speed limit (70km/h)",
+      "count": 3467
+    },
+    {
+      "class_id": 1,
+      "class_name": "Speed limit (30km/h)",
+      "count": 3186
+    },
+    {
+      "class_id": 8,
+      "class_name": "Speed limit (120km/h)",
+      "count": 2469
+    },
+    {
+      "class_id": 18,
+      "class_name": "General caution",
+      "count": 1611
+    },
+    {
+      "class_id": 2,
+      "class_name": "Speed limit (50km/h)",
+      "count": 1512
+    },
+    {
+      "class_id": 7,
+      "class_name": "Speed limit (100km/h)",
+      "count": 1249
+    },
+    {
+      "class_id": 31,
+      "class_name": "Wild animals crossing",
+      "count": 1193
+    },
+    {
+      "class_id": 5,
+      "class_name": "Speed limit (80km/h)",
+      "count": 959
+    },
+    {
+      "class_id": 22,
+      "class_name": "Bumpy road",
+      "count": 694
+    }
+  ],
+  "per_condition": [
+    {
+      "corruption": "gaussian_noise",
+      "severity": 3,
+      "acc_raw": 0.7670625494853524,
+      "acc_gated_ocs": 0.7669041963578781,
+      "acc_bn_adapt": 0.8665083135391924,
+      "acc_bn_gated_ocs": 0.8669833729216152,
+      "gain_gated_ocs": -0.00015835312747425334,
+      "gain_bn_adapt": 0.09944576405384009,
+      "gain_total": 0.09992082343626285
+    },
+    {
+      "corruption": "gaussian_noise",
+      "severity": 4,
+      "acc_raw": 0.6173396674584323,
+      "acc_gated_ocs": 0.6180522565320665,
+      "acc_bn_adapt": 0.789311163895487,
+      "acc_bn_gated_ocs": 0.7897070467141726,
+      "gain_gated_ocs": 0.0007125890736342511,
+      "gain_bn_adapt": 0.17197149643705467,
+      "gain_total": 0.1723673792557403
+    },
+    {
+      "corruption": "gaussian_noise",
+      "severity": 5,
+      "acc_raw": 0.5014251781472684,
+      "acc_gated_ocs": 0.5027711797307997,
+      "acc_bn_adapt": 0.7090261282660333,
+      "acc_bn_gated_ocs": 0.7089469517022962,
+      "gain_gated_ocs": 0.0013460015835312644,
+      "gain_bn_adapt": 0.2076009501187649,
+      "gain_total": 0.20752177355502777
+    },
+    {
+      "corruption": "shot_noise",
+      "severity": 3,
+      "acc_raw": 0.8018210609659541,
+      "acc_gated_ocs": 0.8022961203483768,
+      "acc_bn_adapt": 0.9034837688044339,
+      "acc_bn_gated_ocs": 0.9034837688044339,
+      "gain_gated_ocs": 0.00047505938242276,
+      "gain_bn_adapt": 0.10166270783847986,
+      "gain_total": 0.10166270783847986
+    },
+    {
+      "corruption": "shot_noise",
+      "severity": 4,
+      "acc_raw": 0.6528899445764054,
+      "acc_gated_ocs": 0.6541567695961995,
+      "acc_bn_adapt": 0.8326207442596991,
+      "acc_bn_gated_ocs": 0.8332541567695962,
+      "gain_gated_ocs": 0.0012668250197941378,
+      "gain_bn_adapt": 0.17973079968329375,
+      "gain_total": 0.18036421219319088
+    },
+    {
+      "corruption": "shot_noise",
+      "severity": 5,
+      "acc_raw": 0.4697545526524149,
+      "acc_gated_ocs": 0.47339667458432305,
+      "acc_bn_adapt": 0.7384006334125099,
+      "acc_bn_gated_ocs": 0.7396674584323041,
+      "gain_gated_ocs": 0.00364212193190816,
+      "gain_bn_adapt": 0.26864608076009505,
+      "gain_total": 0.2699129057798892
+    },
+    {
+      "corruption": "impulse_noise",
+      "severity": 3,
+      "acc_raw": 0.6090261282660333,
+      "acc_gated_ocs": 0.6093428345209818,
+      "acc_bn_adapt": 0.7821060965954078,
+      "acc_bn_gated_ocs": 0.7813935075217735,
+      "gain_gated_ocs": 0.0003167062549485067,
+      "gain_bn_adapt": 0.17307996832937445,
+      "gain_total": 0.1723673792557402
+    },
+    {
+      "corruption": "impulse_noise",
+      "severity": 4,
+      "acc_raw": 0.4880443388756928,
+      "acc_gated_ocs": 0.49113222486144104,
+      "acc_bn_adapt": 0.7228028503562945,
+      "acc_bn_gated_ocs": 0.7235946159936659,
+      "gain_gated_ocs": 0.0030878859857482177,
+      "gain_bn_adapt": 0.23475851148060173,
+      "gain_total": 0.2355502771179731
+    },
+    {
+      "corruption": "impulse_noise",
+      "severity": 5,
+      "acc_raw": 0.38273950910530485,
+      "acc_gated_ocs": 0.3884402216943785,
+      "acc_bn_adapt": 0.6444972288202692,
+      "acc_bn_gated_ocs": 0.6474267616785432,
+      "gain_gated_ocs": 0.00570071258907362,
+      "gain_bn_adapt": 0.2617577197149643,
+      "gain_total": 0.26468725257323833
+    }
+  ]
+}
