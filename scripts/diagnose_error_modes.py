@@ -58,12 +58,12 @@ def build_concept_lookup_matrix(concepts_csv: Path, device: torch.device):
     - border index (0..3)
     - symcat index (0..6)
     """
-    df = load_class_concepts(concepts_csv)
+    rows = load_class_concepts(str(concepts_csv))
     shape_lut, colour_lut, border_lut, symcat_lut = get_concept_lookup_tensors(device=device, csv_path=str(concepts_csv))
     
     # Also build a string tuple signature for exact within/cross group check
     tuple_signatures = {}
-    for _, row in df.iterrows():
+    for row in rows:
         cid = int(row["class_id"])
         sig = (row["shape"], row["colour_profile"], row["border_type"], row["symbol_category"])
         tuple_signatures[cid] = sig
