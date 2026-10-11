@@ -420,7 +420,25 @@ The intended paper story is:
    - Exp 3 (Frequency ResNet-18): Clean Acc $97.47\%$, F1 $95.68\%$, ECE $0.0127$, mCA $83.20\%$, RPD $14.64\%$.
    - Exp 4 (Concept Bottleneck Model): Clean Acc **97.59%**, F1 **96.75%**, ECE **0.0114**, mCA **84.29%** (project record), RPD **13.62%** (lowest degradation).
    - Exp 5 (Hybrid AugMix + CBM): Clean Acc **97.61%**, F1 **96.53%**, ECE **0.0127**, mCA **81.63%**, RPD **16.37%**. Falsified naive additive complementarity ($H_3$): revealed Representation-Augmentation Interference where AugMix color-destructive transformations (`solarize`, `posterize`) conflict with physical concept consistency (`colour_profile`).
-   - Exp 6 (Frequency-Aware CBM): **NEXT UP**. Combines Fourier spectral regularization (LFC/Dropout) with CBM to target high-frequency noise without color-semantic destruction.
+7. **Empirical Ladder Status:**
+   - Exp 1 (Baseline ResNet-18): Clean Acc $97.91\%$, F1 $97.07\%$, ECE $0.0082$, mCA $83.88\%$, RPD $14.33\%$.
+   - Exp 2 (AugMix ResNet-18): Clean Acc $98.47\%$, F1 $97.78\%$, ECE $0.0071$, mCA $83.10\%$, RPD $15.61\%$.
+   - Exp 3 (Frequency ResNet-18): Clean Acc $97.47\%$, F1 $95.68\%$, ECE $0.0127$, mCA $83.20\%$, RPD $14.64\%$.
+   - Exp 4 (Concept Bottleneck Model): Clean Acc **97.59%**, F1 **96.75%**, ECE **0.0114**, mCA **84.29%**, RPD **13.62%**.
+   - Exp 5 (Hybrid AugMix + CBM): Clean Acc **97.61%**, F1 **96.53%**, ECE **0.0127**, mCA **81.63%**, RPD **16.37%**. Falsified naive additive complementarity ($H_3$): revealed Representation-Augmentation Interference where AugMix color-destructive transformations (`solarize`, `posterize`) conflict with physical concept consistency (`colour_profile`).
+   - Exp 6 (Frequency-Aware CBM): Clean Acc **97.45%**, F1 **96.60%**, mCA **84.21%**, RPD **13.59%**. Confirmed that color-preserving spectral regularization avoids the destructive interference of AugMix, but proved that training-time tricks saturate at $\sim 84.2\%$ mCA.
+8. **Concept Degradation Rate (CDR) Analysis:**
+   - Shape is the most robust primitive (11.2% CDR at Sev 5), while Symbol Category is the most fragile (20.2% CDR). Confirms hierarchical semantic stability.
+9. **Error Mode & Ontology Diagnostic:**
+   - Audited 46,770 misclassifications: 53.3% within-group vs. 46.7% cross-group.
+   - 66.3% of all within-group errors concentrate in speed-limit numerals (16,527 errors), confirming the 25.58% oracle Bayes ceiling of a 4-axis ontology.
+   - Falsified Ontology-Consistent Decoding (OCS): +0.06% gain, AUROC 0.852 vs 0.879 for MSP due to synchronous failure of shared backbone.
+10. **Test-Time Normalization Adaptation (BN-Adapt) Breakthrough:**
+    - Full 75-condition sweep across 3 seeds (42, 43, 44):
+      - Clean Accuracy: 97.59% (Static) $\to$ **97.59% (Shift-Gated, zero harm)**.
+      - 75-point mCA: **84.25% $\to$ 88.50% (+4.25 percentage points raw boost)**.
+      - Severe noise leaps: Fog Sev 5 (+35.91%), Impulse Noise Sev 5 (+26.65%), Shot Noise Sev 5 (+26.63%), Gaussian Noise Sev 5 (+21.03%).
+      - Deployment stream sweep (Gaussian Sev 5): $N=1$ (49.87%), $N=8$ (**66.73%**, +16.86 points with source momentum), $N=128$ (**71.03%**).
 
 ---
 
@@ -443,9 +461,8 @@ When assisting this project, an AI agent should:
 
 ## 16. Immediate Next Steps
 
-1. Implement Experiment 6: Frequency-Aware Concept Bottleneck Model (Spectral Regularization + CBM).
-2. Hypothesize that Fourier-domain filtering avoids the semantic color destruction of AugMix while mitigating high-frequency noise susceptibility.
-3. Prepare unit tests, training pipeline (`train_freq_cbm.py`), and Colab orchestrator for Experiment 6.
+1. Run the Full 75-Condition Benchmark on Exp 1 (Baseline ResNet-18) across seeds 42, 43, 44 to test whether CBM retains an advantage post-BN-adaptation ($H_3$ complementarity).
+2. Compare Baseline vs. CBM side-by-side to finalize the conference paper manuscript.
 
 
 ---

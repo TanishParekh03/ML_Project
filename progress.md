@@ -340,18 +340,61 @@ Following the discovery of Representation-Augmentation Interference, we pivoted 
   2. **Colour (Macroscopic Photometry):** $\text{CDR} = 13.9\%$
   3. **Border (Macroscopic Topology):** $\text{CDR} = 14.0\%$
   4. **Symbol Category (Fine-Grained Interior Detail):** $\text{CDR} = 20.2\%$ (Most Fragile)
-### Step 8: Final Execution Action — Experiment 6 (Frequency-Aware CBM) [COMPLETE]
-We implemented Experiment 6 to explicitly solve the Representation-Augmentation Interference caused by AugMix, replacing it with color-preserving Frequency Regularization (LFC).
+### Step 8: Execution Action — Experiment 6 (Frequency-Aware CBM) [COMPLETE]
+We implemented Experiment 6 to test whether frequency-domain spectral filtering resolves the Representation-Augmentation Interference caused by spatial AugMix.
 - **Status:** **COMPLETE**.
 - **Results:**
   - Clean Accuracy: 97.45%
   - Clean Macro-F1: 96.60%
   - mCA (75-pt): **84.21%**
-  - RPD: **13.59%** (Lowest overall relative drop)
-- **Scientific Conclusion:** Experiment 6 perfectly validated our hypothesis. While AugMix violently collapsed the CBM to 81.63% mCA, Frequency Regularization cleanly preserved the semantic bottleneck, achieving the best relative robustness (RPD: 13.59%) across all 6 experiments. This proves that semantic architectures require strictly orthogonal, color-preserving augmentations.
+  - RPD: **13.59%**
+- **Calibrated Scientific Takeaway:** The difference between Exp 4 (84.29%) and Exp 6 (84.21%) is within the single-seed variance margin ($\pm 0.4\%$). The defensible empirical finding is that **Frequency Regularization avoids the severe regression seen in AugMix (81.63%)**, confirming that color-preserving spectral augmentations do not clash with semantic concept objectives. However, all training-time methods without noise exposure plateau at $\sim 84.2\%$ mCA.
 
 ---
-### Phase 7: Final Paper Assembly & Project Wrap-Up
-All empirical experiments are complete. The project narrative has evolved from standard benchmarking to a novel investigation into Semantic Robustness and Concept Degradation. The findings are ready to be compiled into the final conference-style manuscript.
+
+### Step 9: Diagnostic — Error Distribution & Ontology Resolution Limits [COMPLETE]
+We evaluated 46,770 misclassifications across Gaussian, Shot, and Impulse noise (Severities 3–5) to identify the mathematical failure modes of the CBM architecture.
+- **Status:** **COMPLETE**.
+- **Empirical Findings:**
+  1. **Within-Group Errors (53.3%, 24,927 errors):** Predicted class shares the exact same concept tuple as true class.
+     - **Speed-Limit Digit Dominance:** The 7 speed-limit classes account for **16,527 errors (66.3% of all within-group errors)**. Adding Warning Triangles brings the concentration to **80.3%**.
+     - **The 25.58% Oracle Ceiling:** Proves the intrinsic resolution limit of the 4-axis Vienna ontology—it cannot distinguish 60 km/h from 80 km/h because both share `(circle, white_red, red_border, speed_numeral)`.
+  2. **Cross-Group Errors (46.7%, 21,843 errors):** Concept tuples differ between prediction and truth; dominates at Severity 5 (53.3%–54.5%).
+  3. **Falsification of Multi-Task Concept Reranking (The OCS Negative Result):**
+     - Naive decoding ($\beta=1.0$) harmed 1,086 samples and rescued 861 (net $-225$, McNemar $\chi^2 \approx 26$).
+     - Gated decoding ($\tau=0.70$) was virtually flat ($+0.18$ on raw, $+0.06$ on BN-adapt).
+     - As an error detector, OCS underperforms Max-Softmax Probability (AUROC **0.8520** vs. **0.8787**).
+     - **Mechanistic Cause:** The concept heads and class head branch from the same shared 512-dim backbone; when visual features collapse under severe noise, both heads fail synchronously.
+
+---
+
+### Step 10: The Test-Time Breakthrough — Full 75-Condition Shift-Gated BN-Adaptation [COMPLETE]
+We implemented Test-Time Batch Normalization Adaptation (BN-Adapt) and evaluated the frozen Exp 4 CBM across all 75 corruptions + Clean split with **3 fixed random seeds (42, 43, 44)**.
+- **Status:** **COMPLETE**.
+- **Master Benchmark Results:**
+  - **Clean Test Accuracy:** 97.59% (Static) $\rightarrow$ 97.46% (Unregularized BN) $\rightarrow$ **97.59% (Shift-Gated, 0.0% degradation)**.
+  - **75-Condition mCA (15 corruptions $\times$ 5 severities):** **84.25% $\rightarrow$ 88.50% (+4.25 percentage points raw boost!)**.
+- **Extreme Condition Leaps (Severity 5):**
+  - Heavy Fog Sev 5: $60.68\% \rightarrow \mathbf{96.59\%}$ (**$+35.91\%$**)
+  - Impulse Noise Sev 5: $38.19\% \rightarrow \mathbf{64.83\%}$ (**$+26.65\%$**)
+  - Shot Noise Sev 5: $47.53\% \rightarrow \mathbf{74.16\%}$ (**$+26.63\%$**)
+  - Gaussian Noise Sev 5: $50.01\% \rightarrow \mathbf{71.04\%}$ (**$+21.03\%$**)
+- **Resolution of the 14 Mild Cases:**
+  - Unregularized BN-adapt suffered tiny drops ($<0.15\%$) on 14 mild blur/compression conditions.
+  - **Shift-Gating** retains source statistics when distribution divergence $D < \tau_{\text{shift}}$, completely eliminating this penalty.
+- **Deployment Streaming Sweep (Gaussian Noise Sev 5):**
+  - Batch Size 1: 49.87%
+  - Batch Size 8 (Source-Momentum Mixing): **66.73% (+16.86 points)**
+  - Batch Size 32: **69.89% (+20.02 points)**
+  - Batch Size 128: **71.03% (+21.16 points)**
+
+---
+
+### Phase 7: Re-Centered Manuscript Narrative & Final Synthesis
+The paper's narrative is officially centered around:
+1. **Train-Time Saturation:** Training tricks hover in a narrow $\sim 1\%$ band ($81.6\% - 84.3\%$).
+2. **The Test-Time Normalization Breakthrough:** BN-Adapt recovers $+4.25\%$ on 75-point mCA and $+21\%$ to $+36\%$ on severe corruptions.
+3. **The Legal Ontology Resolution Limit:** 66.3% of within-group errors concentrate in speed-limit numerals.
+4. **The Synchronous Multi-Task Failure:** Explaining why concept reranking fails to act as an independent validator.
 
 
