@@ -229,10 +229,13 @@ def jpeg_compression(x: PILImage.Image | np.ndarray, severity: int = 1) -> PILIm
 
 
 def elastic_transform(x: PILImage.Image | np.ndarray, severity: int = 1) -> PILImage.Image | np.ndarray:
-    """Vectorized spline deformation via cv2.remap (50x acceleration over SciPy)."""
+    """Vectorized spline deformation via cv2.remap.
+    Parameters scaled proportionally for 64x64 GTSRB inputs to prevent coordinate disintegration.
+    """
     is_pil = isinstance(x, PILImage.Image)
     arr = _to_np_uint8(x).astype(np.float32) / 255.0
-    c = [(30, 2.5), (45, 2.0), (60, 1.8), (75, 1.5), (90, 1.2)][severity - 1]
+    # Scaled for 64x64 canvas (approx 10%, 15%, 20%, 25%, 30% of canvas dimension)
+    c = [(6.0, 2.0), (10.0, 1.8), (13.0, 1.5), (16.0, 1.2), (20.0, 1.0)][severity - 1]
     alpha, sigma = c
     h, w = arr.shape[:2]
 
@@ -248,20 +251,82 @@ def elastic_transform(x: PILImage.Image | np.ndarray, severity: int = 1) -> PILI
     return PILImage.fromarray(out) if is_pil else out
 
 
+def snow(x: PILImage.Image | np.ndarray, severity: int = 1) -> PILImage.Image | np.ndarray:
+    """Vectorized snow corruption: motion-blurred snowflakes + white frost blend."""
+    is_pil = isinstance(x, PILImage.Image)
+    arr = _to_np_uint8(x).astype(np.float32) / 255.0
+    c = [(0.10, 0.20, 3, 0.85),
+         (0.18, 0.25, 4, 0.75),
+         (0.28, 0.30, 5, 0.65),
+         (0.38, 0.35, 6, 0.55),
+         (0.48, 0.40, 7, 0.45)][severity - 1]
+    loc, scale, k_size, blend = c
+    h, w = arr.shape[:2]
+
+    # Generate random flakes
+    snow_layer = np.random.normal(size=(h, w), loc=loc, scale=scale)
+    snow_layer = np.clip(snow_layer.astype(np.float32), 0, 1)
+
+    # Diagonal motion blur for falling flakes
+    kernel = motion_blur_kernel(kernel_size=max(3, k_size), angle=45.0)
+    snow_layer = cv2.filter2D(snow_layer, -1, kernel)
+    snow_layer = np.expand_dims(snow_layer, axis=-1)
+
+    # Blend with white snow haze
+    gray = cv2.cvtColor((arr * 255).astype(np.uint8), cv2.COLOR_RGB2GRAY).astype(np.float32) / 255.0
+    haze = np.expand_dims(gray * 0.4 + 0.3, axis=-1)
+    blended = blend * arr + (1.0 - blend) * np.maximum(arr, haze)
+    out = np.uint8(np.clip(blended + snow_layer * 0.4, 0.0, 1.0) * 255)
+    return PILImage.fromarray(out) if is_pil else out
+
+
+def frost(x: PILImage.Image | np.ndarray, severity: int = 1) -> PILImage.Image | np.ndarray:
+    """Vectorized frost ice crystal corruption for 64x64 canvas."""
+    is_pil = isinstance(x, PILImage.Image)
+    arr = _to_np_uint8(x).astype(np.float32) / 255.0
+    c = [(0.25, 0.60), (0.35, 0.50), (0.45, 0.40), (0.55, 0.30), (0.65, 0.25)][severity - 1]
+    alpha, scale = c
+    h, w = arr.shape[:2]
+
+    # Multi-frequency frost texture
+    grid = np.random.uniform(0.0, 1.0, (max(4, h // 4), max(4, w // 4))).astype(np.float32)
+    frost_tex = cv2.resize(grid, (w, h), interpolation=cv2.INTER_CUBIC)
+    frost_tex = np.expand_dims(np.clip(frost_tex, 0.0, 1.0), axis=-1)
+
+    frosted = (1.0 - alpha) * arr + alpha * (scale * arr + (1.0 - scale) * frost_tex + 0.15)
+    out = np.uint8(np.clip(frosted, 0.0, 1.0) * 255)
+    return PILImage.fromarray(out) if is_pil else out
+
+
+# ==============================================================================
+# The Canonical 15 Benchmark Corruptions (Hendrycks & Dietterich 2019)
+# ==============================================================================
 CORRUPTIONS_REGISTRY: dict[str, Callable[[PILImage.Image | np.ndarray, int], PILImage.Image | np.ndarray]] = {
+    # 1. Noise (3)
     "gaussian_noise": gaussian_noise,
     "shot_noise": shot_noise,
     "impulse_noise": impulse_noise,
-    "speckle_noise": speckle_noise,
+    # 2. Blur (4)
     "defocus_blur": defocus_blur,
+    "glass_blur": glass_blur,
     "motion_blur": motion_blur,
     "zoom_blur": zoom_blur,
-    "gaussian_blur": gaussian_blur,
-    "glass_blur": glass_blur,
-    "brightness": brightness,
-    "contrast": contrast,
+    # 3. Weather (4)
+    "snow": snow,
+    "frost": frost,
     "fog": fog,
+    "brightness": brightness,
+    # 4. Digital (4)
+    "contrast": contrast,
+    "elastic_transform": elastic_transform,
     "pixelate": pixelate,
     "jpeg_compression": jpeg_compression,
-    "elastic_transform": elastic_transform,
+}
+
+# ==============================================================================
+# Held-Out Validation Corruptions (For Hyperparameter Tuning ONLY - NEVER REPORTED)
+# ==============================================================================
+HELD_OUT_VALIDATION_CORRUPTIONS: dict[str, Callable[[PILImage.Image | np.ndarray, int], PILImage.Image | np.ndarray]] = {
+    "speckle_noise": speckle_noise,
+    "gaussian_blur": gaussian_blur,
 }
