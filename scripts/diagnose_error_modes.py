@@ -37,6 +37,9 @@ from src.models.cbm import ConceptBottleneckModel, get_concept_lookup_tensors
 from src.models.concept_encoder import encode_all_classes, load_class_concepts
 
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+
 def load_cbm_model(checkpoint_path: str, device: torch.device) -> nn.Module:
     checkpoint = torch.load(checkpoint_path, map_location=device)
     state_dict = checkpoint["model_state_dict"] if "model_state_dict" in checkpoint else checkpoint
@@ -277,8 +280,21 @@ def main():
     print("=" * 80)
 
     model = load_cbm_model(args.checkpoint, device)
-    concept_luts, tuple_signatures = build_concept_lookup_matrix(Path(args.concepts_csv), device)
-    test_df = pd.read_csv(args.meta_path)
+
+    meta_path = Path(args.meta_path)
+    if not meta_path.exists() and (PROJECT_ROOT / meta_path).exists():
+        meta_path = PROJECT_ROOT / meta_path
+
+    concepts_csv = Path(args.concepts_csv)
+    if not concepts_csv.exists() and (PROJECT_ROOT / concepts_csv).exists():
+        concepts_csv = PROJECT_ROOT / concepts_csv
+
+    data_root = Path(args.data_root)
+    if not data_root.exists() and (PROJECT_ROOT / data_root).exists():
+        data_root = PROJECT_ROOT / data_root
+
+    concept_luts, tuple_signatures = build_concept_lookup_matrix(concepts_csv, device)
+    test_df = pd.read_csv(meta_path)
 
     if args.corruptions == "all":
         corruptions_to_test = list(CORRUPTIONS_REGISTRY.keys())
@@ -290,7 +306,7 @@ def main():
     summary = run_diagnostic(
         model=model,
         test_df=test_df,
-        data_root=Path(args.data_root),
+        data_root=data_root,
         device=device,
         concept_luts=concept_luts,
         tuple_signatures=tuple_signatures,
@@ -301,6 +317,8 @@ def main():
     )
 
     out_p = Path(args.output_json)
+    if not out_p.is_absolute():
+        out_p = PROJECT_ROOT / out_p
     out_p.parent.mkdir(parents=True, exist_ok=True)
     with open(out_p, "w") as f:
         json.dump(summary, f, indent=2)
