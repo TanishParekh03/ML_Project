@@ -59,7 +59,7 @@ def build_concept_lookup_matrix(concepts_csv: Path, device: torch.device):
     - symcat index (0..6)
     """
     df = load_class_concepts(concepts_csv)
-    shape_lut, colour_lut, border_lut, symcat_lut = get_concept_lookup_tensors(df, device)
+    shape_lut, colour_lut, border_lut, symcat_lut = get_concept_lookup_tensors(device=device, csv_path=str(concepts_csv))
     
     # Also build a string tuple signature for exact within/cross group check
     tuple_signatures = {}
@@ -319,3 +319,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
