@@ -37,7 +37,7 @@ from sklearn.metrics import accuracy_score
 from tqdm import tqdm
 
 from src.corruptions import CORRUPTIONS_REGISTRY
-from src.dataset import IMAGENET_MEAN, IMAGENET_STD, letterbox_roi_crop
+from src.dataset import IMAGENET_MEAN, IMAGENET_STD, letterbox_roi_crop, resolve_image_path
 from src.models.baseline_cnn import BaselineResNet18
 from src.models.cbm import ConceptBottleneckModel
 
@@ -190,7 +190,8 @@ def run_full_75_sweep(
     clean_items = []
     for _, row in test_df.iterrows():
         rel_p = str(row["source_relative_path"]).replace("\\", "/")
-        with Image.open(data_root / rel_p) as raw_img:
+        img_path = resolve_image_path(data_root, rel_p)
+        with Image.open(img_path) as raw_img:
             img = raw_img.convert("RGB")
         roi = (int(row["roi_x1"]), int(row["roi_y1"]), int(row["roi_x2"]), int(row["roi_y2"]))
         canvas = letterbox_roi_crop(img, roi, target_size=64)
@@ -293,7 +294,8 @@ def run_batch_size_sweep(
     clean_items = []
     for _, row in test_df.iterrows():
         rel_p = str(row["source_relative_path"]).replace("\\", "/")
-        with Image.open(data_root / rel_p) as raw_img:
+        img_path = resolve_image_path(data_root, rel_p)
+        with Image.open(img_path) as raw_img:
             img = raw_img.convert("RGB")
         roi = (int(row["roi_x1"]), int(row["roi_y1"]), int(row["roi_x2"]), int(row["roi_y2"]))
         canvas = letterbox_roi_crop(img, roi, target_size=64)
