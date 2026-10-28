@@ -126,6 +126,15 @@ AUGMIX_OPERATIONS: list[Callable[[Image.Image, float], Image.Image]] = [
     _translate_y,
 ]
 
+# 5 geometric-only operations (Ablation 5A: strictly chromatic-free)
+AUGMIX_GEOMETRIC_OPERATIONS: list[Callable[[Image.Image, float], Image.Image]] = [
+    _rotate,
+    _shear_x,
+    _shear_y,
+    _translate_x,
+    _translate_y,
+]
+
 
 # ==============================================================================
 # 2. Augment-and-Mix Algorithm (Hendrycks et al., 2020)
@@ -137,6 +146,7 @@ def augment_and_mix(
     width: int = 3,
     depth: int = -1,
     alpha: float = 1.0,
+    exclude_color_ops: bool = False,
 ) -> Image.Image:
     """Applies AugMix transformation to an input PIL Image.
 
@@ -166,8 +176,9 @@ def augment_and_mix(
         # Stochastic depth: d ~ Uniform({1, 2, 3})
         d = random.randint(1, 3) if depth < 0 else depth
 
+        ops_pool = AUGMIX_GEOMETRIC_OPERATIONS if exclude_color_ops else AUGMIX_OPERATIONS
         for _ in range(d):
-            op = random.choice(AUGMIX_OPERATIONS)
+            op = random.choice(ops_pool)
             branch_img = op(branch_img, float(severity))
 
         branch_np = np.asarray(branch_img).astype(np.float32) / 255.0
@@ -197,6 +208,7 @@ class AugMixDataset(GTSRBDataset):
         width: int = 3,
         depth: int = -1,
         alpha: float = 1.0,
+        exclude_color_ops: bool = False,
         is_training: bool = True,
     ):
         super().__init__(
@@ -210,6 +222,7 @@ class AugMixDataset(GTSRBDataset):
         self.width = width
         self.depth = depth
         self.alpha = alpha
+        self.exclude_color_ops = exclude_color_ops
 
     def __getitem__(self, idx: int) -> dict[str, Any]:
         row = self.df.iloc[idx]
@@ -230,10 +243,12 @@ class AugMixDataset(GTSRBDataset):
         if self.is_training:
             # Generate two distinct augmented views via independent AugMix sampling
             aug1_pil = augment_and_mix(
-                canvas, severity=self.severity, width=self.width, depth=self.depth, alpha=self.alpha
+                canvas, severity=self.severity, width=self.width, depth=self.depth, alpha=self.alpha,
+                exclude_color_ops=self.exclude_color_ops,
             )
             aug2_pil = augment_and_mix(
-                canvas, severity=self.severity, width=self.width, depth=self.depth, alpha=self.alpha
+                canvas, severity=self.severity, width=self.width, depth=self.depth, alpha=self.alpha,
+                exclude_color_ops=self.exclude_color_ops,
             )
 
             t_aug1 = _to_normalized_tensor(aug1_pil)

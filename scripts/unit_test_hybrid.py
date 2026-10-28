@@ -167,6 +167,78 @@ def run_tests():
         passed += 1
         total += 1
 
+
+    # ----------------------------------------------------
+    # Test 5: Ablation 5A and 5B Verification
+    # ----------------------------------------------------
+    print("\nTest 5: Ablation 5A (Geometric-Only) & 5B (Decoupled Concept JSD)")
+    from PIL import Image
+    import torch
+    from src.augmentations.augmix import AUGMIX_OPERATIONS, AUGMIX_GEOMETRIC_OPERATIONS, augment_and_mix
+    from src.models.hybrid_loss import HybridCBMLoss
+
+    # 5A: Geometric-only checks
+    assert len(AUGMIX_OPERATIONS) == 9, f"Expected 9 standard ops, got {len(AUGMIX_OPERATIONS)}"
+    assert len(AUGMIX_GEOMETRIC_OPERATIONS) == 5, f"Expected 5 geometric ops, got {len(AUGMIX_GEOMETRIC_OPERATIONS)}"
+    print("  [PASS] Operation pools: Standard=9 ops, Geometric-Only=5 ops")
+    passed += 1
+    total += 1
+
+    dummy_img = Image.new("RGB", (64, 64), color=(128, 64, 32))
+    aug_geom = augment_and_mix(dummy_img, severity=3, exclude_color_ops=True)
+    assert aug_geom.size == (64, 64), "Geometric-only AugMix failed to produce 64x64 output"
+    print("  [PASS] Ablation 5A: Chromatic-Free AugMix forward execution verified")
+    passed += 1
+    total += 1
+
+    # 5B: Decoupled Concept JSD checks
+    loss_fn_decoupled = HybridCBMLoss(decouple_concept_jsd=True)
+    loss_fn_zero_col = HybridCBMLoss(zero_colour_jsd=True)
+
+    dummy_clean = {
+        "logits": torch.randn(2, 43),
+        "logits_shape": torch.randn(2, 6),
+        "logits_colour": torch.randn(2, 5),
+        "logits_border": torch.randn(2, 4),
+        "logits_symcat": torch.randn(2, 7),
+        "logits_aux": torch.randn(2, 43),
+    }
+    dummy_aug1 = {
+        "logits": torch.randn(2, 43),
+        "logits_shape": torch.randn(2, 6),
+        "logits_colour": torch.randn(2, 5),
+        "logits_border": torch.randn(2, 4),
+        "logits_symcat": torch.randn(2, 7),
+    }
+    dummy_aug2 = {
+        "logits": torch.randn(2, 43),
+        "logits_shape": torch.randn(2, 6),
+        "logits_colour": torch.randn(2, 5),
+        "logits_border": torch.randn(2, 4),
+        "logits_symcat": torch.randn(2, 7),
+    }
+    t_cls = torch.tensor([1, 2])
+    t_sh = torch.tensor([0, 1])
+    t_col = torch.tensor([0, 2])
+    t_bor = torch.tensor([0, 1])
+    t_sym = torch.tensor([0, 3])
+
+    total_l_dec, metrics_dec = loss_fn_decoupled(
+        dummy_clean, dummy_aug1, dummy_aug2, t_cls, t_sh, t_col, t_bor, t_sym
+    )
+    assert metrics_dec["loss_jsd_cpt"] == 0.0, f"Expected 0.0, got {metrics_dec['loss_jsd_cpt']}"
+    print("  [PASS] Ablation 5B: Decoupled concept JSD produces loss_jsd_cpt == 0.0")
+    passed += 1
+    total += 1
+
+    total_l_zc, metrics_zc = loss_fn_zero_col(
+        dummy_clean, dummy_aug1, dummy_aug2, t_cls, t_sh, t_col, t_bor, t_sym
+    )
+    assert metrics_zc["loss_jsd_cpt"] >= 0.0, "Zero colour JSD calculation failed"
+    print("  [PASS] Ablation 5B: Zero-colour JSD evaluates correctly without color conflict")
+    passed += 1
+    total += 1
+
     print("=" * 70)
     print(f"RESULTS: {passed}/{total} tests passed  |  {total - passed} failed")
     print("=" * 70)

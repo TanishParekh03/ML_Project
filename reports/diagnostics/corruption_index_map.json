@@ -1,0 +1,382 @@
+{
+  "0": {
+    "condition": "clean",
+    "severity": 0,
+    "category": "clean"
+  },
+  "1": {
+    "condition": "gaussian_noise",
+    "severity": 1,
+    "category": "noise"
+  },
+  "2": {
+    "condition": "gaussian_noise",
+    "severity": 2,
+    "category": "noise"
+  },
+  "3": {
+    "condition": "gaussian_noise",
+    "severity": 3,
+    "category": "noise"
+  },
+  "4": {
+    "condition": "gaussian_noise",
+    "severity": 4,
+    "category": "noise"
+  },
+  "5": {
+    "condition": "gaussian_noise",
+    "severity": 5,
+    "category": "noise"
+  },
+  "6": {
+    "condition": "shot_noise",
+    "severity": 1,
+    "category": "noise"
+  },
+  "7": {
+    "condition": "shot_noise",
+    "severity": 2,
+    "category": "noise"
+  },
+  "8": {
+    "condition": "shot_noise",
+    "severity": 3,
+    "category": "noise"
+  },
+  "9": {
+    "condition": "shot_noise",
+    "severity": 4,
+    "category": "noise"
+  },
+  "10": {
+    "condition": "shot_noise",
+    "severity": 5,
+    "category": "noise"
+  },
+  "11": {
+    "condition": "impulse_noise",
+    "severity": 1,
+    "category": "noise"
+  },
+  "12": {
+    "condition": "impulse_noise",
+    "severity": 2,
+    "category": "noise"
+  },
+  "13": {
+    "condition": "impulse_noise",
+    "severity": 3,
+    "category": "noise"
+  },
+  "14": {
+    "condition": "impulse_noise",
+    "severity": 4,
+    "category": "noise"
+  },
+  "15": {
+    "condition": "impulse_noise",
+    "severity": 5,
+    "category": "noise"
+  },
+  "16": {
+    "condition": "defocus_blur",
+    "severity": 1,
+    "category": "blur"
+  },
+  "17": {
+    "condition": "defocus_blur",
+    "severity": 2,
+    "category": "blur"
+  },
+  "18": {
+    "condition": "defocus_blur",
+    "severity": 3,
+    "category": "blur"
+  },
+  "19": {
+    "condition": "defocus_blur",
+    "severity": 4,
+    "category": "blur"
+  },
+  "20": {
+    "condition": "defocus_blur",
+    "severity": 5,
+    "category": "blur"
+  },
+  "21": {
+    "condition": "glass_blur",
+    "severity": 1,
+    "category": "blur"
+  },
+  "22": {
+    "condition": "glass_blur",
+    "severity": 2,
+    "category": "blur"
+  },
+  "23": {
+    "condition": "glass_blur",
+    "severity": 3,
+    "category": "blur"
+  },
+  "24": {
+    "condition": "glass_blur",
+    "severity": 4,
+    "category": "blur"
+  },
+  "25": {
+    "condition": "glass_blur",
+    "severity": 5,
+    "category": "blur"
+  },
+  "26": {
+    "condition": "motion_blur",
+    "severity": 1,
+    "category": "blur"
+  },
+  "27": {
+    "condition": "motion_blur",
+    "severity": 2,
+    "category": "blur"
+  },
+  "28": {
+    "condition": "motion_blur",
+    "severity": 3,
+    "category": "blur"
+  },
+  "29": {
+    "condition": "motion_blur",
+    "severity": 4,
+    "category": "blur"
+  },
+  "30": {
+    "condition": "motion_blur",
+    "severity": 5,
+    "category": "blur"
+  },
+  "31": {
+    "condition": "zoom_blur",
+    "severity": 1,
+    "category": "blur"
+  },
+  "32": {
+    "condition": "zoom_blur",
+    "severity": 2,
+    "category": "blur"
+  },
+  "33": {
+    "condition": "zoom_blur",
+    "severity": 3,
+    "category": "blur"
+  },
+  "34": {
+    "condition": "zoom_blur",
+    "severity": 4,
+    "category": "blur"
+  },
+  "35": {
+    "condition": "zoom_blur",
+    "severity": 5,
+    "category": "blur"
+  },
+  "36": {
+    "condition": "snow",
+    "severity": 1,
+    "category": "weather"
+  },
+  "37": {
+    "condition": "snow",
+    "severity": 2,
+    "category": "weather"
+  },
+  "38": {
+    "condition": "snow",
+    "severity": 3,
+    "category": "weather"
+  },
+  "39": {
+    "condition": "snow",
+    "severity": 4,
+    "category": "weather"
+  },
+  "40": {
+    "condition": "snow",
+    "severity": 5,
+    "category": "weather"
+  },
+  "41": {
+    "condition": "frost",
+    "severity": 1,
+    "category": "weather"
+  },
+  "42": {
+    "condition": "frost",
+    "severity": 2,
+    "category": "weather"
+  },
+  "43": {
+    "condition": "frost",
+    "severity": 3,
+    "category": "weather"
+  },
+  "44": {
+    "condition": "frost",
+    "severity": 4,
+    "category": "weather"
+  },
+  "45": {
+    "condition": "frost",
+    "severity": 5,
+    "category": "weather"
+  },
+  "46": {
+    "condition": "fog",
+    "severity": 1,
+    "category": "weather"
+  },
+  "47": {
+    "condition": "fog",
+    "severity": 2,
+    "category": "weather"
+  },
+  "48": {
+    "condition": "fog",
+    "severity": 3,
+    "category": "weather"
+  },
+  "49": {
+    "condition": "fog",
+    "severity": 4,
+    "category": "weather"
+  },
+  "50": {
+    "condition": "fog",
+    "severity": 5,
+    "category": "weather"
+  },
+  "51": {
+    "condition": "brightness",
+    "severity": 1,
+    "category": "weather"
+  },
+  "52": {
+    "condition": "brightness",
+    "severity": 2,
+    "category": "weather"
+  },
+  "53": {
+    "condition": "brightness",
+    "severity": 3,
+    "category": "weather"
+  },
+  "54": {
+    "condition": "brightness",
+    "severity": 4,
+    "category": "weather"
+  },
+  "55": {
+    "condition": "brightness",
+    "severity": 5,
+    "category": "weather"
+  },
+  "56": {
+    "condition": "contrast",
+    "severity": 1,
+    "category": "digital"
+  },
+  "57": {
+    "condition": "contrast",
+    "severity": 2,
+    "category": "digital"
+  },
+  "58": {
+    "condition": "contrast",
+    "severity": 3,
+    "category": "digital"
+  },
+  "59": {
+    "condition": "contrast",
+    "severity": 4,
+    "category": "digital"
+  },
+  "60": {
+    "condition": "contrast",
+    "severity": 5,
+    "category": "digital"
+  },
+  "61": {
+    "condition": "elastic_transform",
+    "severity": 1,
+    "category": "digital"
+  },
+  "62": {
+    "condition": "elastic_transform",
+    "severity": 2,
+    "category": "digital"
+  },
+  "63": {
+    "condition": "elastic_transform",
+    "severity": 3,
+    "category": "digital"
+  },
+  "64": {
+    "condition": "elastic_transform",
+    "severity": 4,
+    "category": "digital"
+  },
+  "65": {
+    "condition": "elastic_transform",
+    "severity": 5,
+    "category": "digital"
+  },
+  "66": {
+    "condition": "pixelate",
+    "severity": 1,
+    "category": "digital"
+  },
+  "67": {
+    "condition": "pixelate",
+    "severity": 2,
+    "category": "digital"
+  },
+  "68": {
+    "condition": "pixelate",
+    "severity": 3,
+    "category": "digital"
+  },
+  "69": {
+    "condition": "pixelate",
+    "severity": 4,
+    "category": "digital"
+  },
+  "70": {
+    "condition": "pixelate",
+    "severity": 5,
+    "category": "digital"
+  },
+  "71": {
+    "condition": "jpeg_compression",
+    "severity": 1,
+    "category": "digital"
+  },
+  "72": {
+    "condition": "jpeg_compression",
+    "severity": 2,
+    "category": "digital"
+  },
+  "73": {
+    "condition": "jpeg_compression",
+    "severity": 3,
+    "category": "digital"
+  },
+  "74": {
+    "condition": "jpeg_compression",
+    "severity": 4,
+    "category": "digital"
+  },
+  "75": {
+    "condition": "jpeg_compression",
+    "severity": 5,
+    "category": "digital"
+  }
+}

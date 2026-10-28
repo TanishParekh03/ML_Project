@@ -3,22 +3,11 @@
   "clean_macro_f1": 0.9777813532847905,
   "clean_ece": 0.007118015417199432,
   "total_test_samples": 12630,
-  "mean_corruption_accuracy": 0.8310150435471101,
-  "relative_performance_drop": 0.15608908900860335,
-  "checkpoint_config": {
-    "data_root": "german",
-    "meta_dir": "data/master_v1/metadata",
-    "output_dir": "checkpoints/augmix_resnet18",
-    "seed": 42,
-    "epochs": 25,
-    "batch_size": 128,
-    "lr": 0.05,
-    "weight_decay": 0.0001,
-    "warmup_epochs": 3,
-    "num_workers": 2,
-    "lambda_jsd": 12.0,
-    "severity": 3,
-    "width": 3,
-    "no_amp": false
-  }
+  "mean_corruption_accuracy": 0.8319324359989442,
+  "relative_performance_drop": 0.15515746026640956,
+  "shift_gated_mca": 0.8850841910794407,
+  "shift_gated_rpd": 0.10118088499370141,
+  "bn_adapt_mca": 0.8849511744523619,
+  "net_gain_shift_gated": 0.05315175508049652,
+  "checkpoint": "/content/ML_Project/reports/augmix_resnet18/best_augmix_resnet18.pt"
 }

@@ -3,20 +3,11 @@
   "clean_macro_f1": 0.9706761836018017,
   "clean_ece": 0.008222349425770444,
   "total_test_samples": 12630,
-  "mean_corruption_accuracy": 0.8387732911058327,
-  "relative_performance_drop": 0.1433198555178177,
-  "checkpoint_config": {
-    "data_root": "german",
-    "meta_dir": "data/master_v1/metadata",
-    "output_dir": "checkpoints/baseline_resnet18",
-    "seed": 42,
-    "epochs": 25,
-    "batch_size": 128,
-    "lr": 0.05,
-    "weight_decay": 0.0001,
-    "warmup_epochs": 3,
-    "num_workers": 2,
-    "no_pretrained": false,
-    "no_amp": false
-  }
+  "mean_corruption_accuracy": 0.8385959356030614,
+  "relative_performance_drop": 0.1435009973583482,
+  "shift_gated_mca": 0.8872958564264978,
+  "shift_gated_rpd": 0.0937613887541107,
+  "bn_adapt_mca": 0.8873718659276855,
+  "net_gain_shift_gated": 0.04869992082343633,
+  "checkpoint": "/content/ML_Project/reports/baseline_resnet18/best_baseline_resnet18.pt"
 }

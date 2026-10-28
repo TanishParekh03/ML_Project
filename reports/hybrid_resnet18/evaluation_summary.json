@@ -1,0 +1,13 @@
+{
+  "clean_accuracy": 0.9760886777513856,
+  "clean_macro_f1": 0.9653159155464631,
+  "clean_ece": 0.012669371108591574,
+  "total_test_samples": 12630,
+  "mean_corruption_accuracy": 0.8186265505410397,
+  "relative_performance_drop": 0.16131948950897704,
+  "shift_gated_mca": 0.8791026656109789,
+  "shift_gated_rpd": 0.09936188622106883,
+  "bn_adapt_mca": 0.8791438374241225,
+  "net_gain_shift_gated": 0.06047611506993922,
+  "checkpoint": "/content/ML_Project/reports/hybrid_resnet18/best_hybrid_resnet18.pt"
+}

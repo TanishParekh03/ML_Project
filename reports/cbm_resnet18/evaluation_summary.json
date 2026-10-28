@@ -1,0 +1,13 @@
+{
+  "clean_accuracy": 0.9758511480601741,
+  "clean_macro_f1": 0.9675455243307465,
+  "clean_ece": 0.011356606705502072,
+  "total_test_samples": 12630,
+  "mean_corruption_accuracy": 0.8456605964634468,
+  "relative_performance_drop": 0.1334123056118999,
+  "shift_gated_mca": 0.8928846661388231,
+  "shift_gated_rpd": 0.085019607843137,
+  "bn_adapt_mca": 0.892976510952758,
+  "net_gain_shift_gated": 0.04722406967537629,
+  "checkpoint": "/content/ML_Project/reports/cbm_resnet18/best_cbm_resnet18.pt"
+}

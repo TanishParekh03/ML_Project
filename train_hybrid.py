@@ -258,6 +258,13 @@ def main():
     parser.add_argument("--seed", type=int, default=42, help="Random seed")
     parser.add_argument("--num-workers", type=int, default=2, help="DataLoader workers")
     parser.add_argument("--no-amp", action="store_true", help="Disable AMP")
+    parser.add_argument(
+        "--ablation",
+        type=str,
+        default="none",
+        choices=["none", "geometric_only", "decouple_concept_jsd"],
+        help="Ablation mode: 'none' (Exp 5), 'geometric_only' (Ablation 5A), 'decouple_concept_jsd' (Ablation 5B)",
+    )
     args = parser.parse_args()
 
     set_seed(args.seed)
@@ -287,6 +294,7 @@ def main():
     val_manifest = Path(args.manifest_dir) / "val.csv"
 
     # Train with AugMixDataset (triplets); Val with standard GTSRBDataset (clean)
+    exclude_color_ops = (args.ablation == "geometric_only")
     train_dataset = AugMixDataset(
         manifest_path=train_manifest,
         data_root=args.data_root,
@@ -294,6 +302,7 @@ def main():
         width=3,
         depth=-1,
         alpha=1.0,
+        exclude_color_ops=exclude_color_ops,
         is_training=True,
     )
     val_dataset = GTSRBDataset(val_manifest, args.data_root, is_training=False)
@@ -327,11 +336,13 @@ def main():
     ).to(device)
 
     # 4. Multi-Scale Hybrid Criterion & Optimizer
+    decouple_concept_jsd = (args.ablation == "decouple_concept_jsd")
     criterion = HybridCBMLoss(
         lambda_c=args.lambda_c,
         lambda_aux=args.lambda_aux,
         lambda_jsd_task=args.lambda_jsd_task,
-        lambda_jsd_cpt=args.lambda_jsd_cpt,
+        lambda_jsd_cpt=0.0 if decouple_concept_jsd else args.lambda_jsd_cpt,
+        decouple_concept_jsd=decouple_concept_jsd,
     )
     param_groups = get_parameter_groups(model, weight_decay=args.weight_decay)
     optimizer = torch.optim.SGD(param_groups, lr=args.lr, momentum=args.momentum, nesterov=True)
@@ -376,7 +387,8 @@ def main():
 
         if is_best:
             best_val_macro_f1 = val_f1
-            best_model_path = out_dir / "best_hybrid_resnet18.pt"
+            ckpt_name = "best_hybrid_resnet18.pt" if args.ablation == "none" else f"best_hybrid_{args.ablation}_resnet18.pt"
+    best_model_path = out_dir / ckpt_name
             torch.save({
                 "epoch": epoch,
                 "model_state_dict": model.state_dict(),

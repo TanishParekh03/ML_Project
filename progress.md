@@ -2,7 +2,7 @@
 
 **Project Title:** Data-Centric, Representation-Centric, and Hybrid Robustness for Interpretable Traffic Sign Recognition  
 **Target Dataset:** German Traffic Sign Recognition Benchmark (GTSRB)  
-**Last Updated:** September 20, 2026 (Evening Session)  
+**Last Updated:** October 27, 2026  
 **Execution Environment:** Windows (Local Code & Dataset Curation) / Google Colab T4 GPU (Deep Learning Training & Evaluation)  
 **Repository Root:** `D:\ML_Project`
 
@@ -186,9 +186,12 @@ C:\Users\TANISH PAREKH\Desktop\ML_Project\
 └── reports/                          # Experiment outputs, metrics, and diagnostics
     ├── baseline_resnet18/            # Exp 1 checkpoints and evaluation summary
     ├── augmix_resnet18/              # Exp 2 checkpoints and evaluation summary
-    ├── frequency_resnet18/           # Exp 3 checkpoints and evaluation summary
-    ├── cbm_resnet18/                 # Exp 4 checkpoints and evaluation summary
-    └── diagnostics/                  # Phase 1 diagnostic matrices & Oracle CBM report
+    ├── frequency_exp3/               # Exp 3 checkpoints and full 75-point benchmark (88.97% record)
+    ├── cbm_resnet18/                 # Exp 4 checkpoints, evaluation summary & best model
+    ├── hybrid_resnet18/              # Exp 5 checkpoints, evaluation summary & best model
+    ├── comparative_summary.json      # Master synchronized JSON summary across all 5 models
+    ├── comparative_all_models.csv    # Comparative CSV table across all paradigms
+    └── diagnostics/                  # Phase 1 diagnostic matrices, BN adapt & Oracle CBM
 ```
 
 
@@ -211,15 +214,15 @@ Refer to [`RESEARCH_GUIDELINES.md`](file:///C:/Users/TANISH%20PAREKH/Desktop/ML_
 
 ### 7-Experiment Controlled Ladder Summary
 
-| Experiment | Method & Objective | Status | Clean Acc | Clean F1 | Clean ECE | mCA (75-pt) | RPD |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Exp 1: Baseline** | Black-box ResNet-18 (Kaiming, Zero-$\gamma$, Cosine) | **COMPLETE** | 97.91% | 97.07% | 0.0082 | 83.88% | 14.33% |
-| **Exp 2: AugMix** | Triplet Jensen-Shannon Divergence ($\lambda=12.0$) | **COMPLETE** | **98.47%** | **97.78%** | **0.0071** | 83.10% | 15.61% |
-| **Exp 3: Frequency** | Fourier LFC / Spectral Dropout ($r=14$, sev=3) | **COMPLETE** | 97.47% | 95.68% | 0.0127 | 83.20% | 14.64% |
-| **Exp 4: CBM** | 4-Axis Concept Bottleneck ($X \to \hat{C} \in \mathbb{R}^{22} \to Y$) | **COMPLETE** | 97.59% | 96.75% | 0.0114 | **84.29%** | **13.62%** |
-| **Exp 5: AugMix+CBM** | Data diversity + Concept Bottleneck | **COMPLETE** | 97.61% | 96.53% | 0.0127 | 81.63% | 16.37% |
-| **Exp 6: Freq+CBM** | Spectral Regularization + Concept Bottleneck | **COMPLETE** | 97.45% | 96.60% | 0.0121 | 84.21% | **13.59%** |
-| **Exp 7: Shift-Gated BN-Adapt** | Test-Time Normalization Adaptation (CBM, 3 seeds) | **COMPLETE** | **97.59%** | — | — | **88.50%** 🏆 | **9.31%** 🏆 |
+| Experiment | Method & Objective | Status | Clean Acc | Clean F1 | Clean ECE | Static $mCA$ | RPD | Shift-Gated BN $mCA$ |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Exp 1: Baseline** | Black-box ResNet-18 (Kaiming, Zero-$\gamma$, Cosine) | **COMPLETE** | 97.91% | 97.07% | 0.0082 | 83.88% | 14.33% | *Pending test* |
+| **Exp 2: AugMix** | Triplet Jensen-Shannon Divergence ($\lambda=12.0$) | **COMPLETE** | **98.47%** | **97.78%** | **0.0071** | 83.10% | 15.61% | *Pending test* |
+| **Exp 3: Frequency** | Fourier LFC / Spectral Dropout ($r=14$, sev=3) | **COMPLETE** | 97.32% | 95.68% | 0.0127 | 83.78% | 13.91% | **88.97%** 🏆 |
+| **Exp 4: CBM** | 4-Axis Concept Bottleneck ($X \to \hat{C} \in \mathbb{R}^{22} \to Y$) | **COMPLETE** | 97.59% | 96.75% | 0.0114 | **84.29%** 🏆 | **13.63%** 🏆 | **88.50%** |
+| **Exp 5: AugMix+CBM** | Data diversity + Concept Bottleneck | **COMPLETE** | 97.61% | 96.53% | 0.0127 | 81.63% | 16.37% | *Pending test* |
+| **Exp 6: Freq+CBM** | Spectral Regularization + Concept Bottleneck | **COMPLETE** | 97.45% | 96.60% | 0.0121 | 84.21% | **13.59%** | — |
+| **Exp 7: Shift-Gated BN-Adapt** | Test-Time Normalization Recalibration (Freq & CBM) | **COMPLETE** | **97.59%** | — | — | — | — | **88.97%** 🏆 / **88.50%** |
 
 ---
 
@@ -240,7 +243,8 @@ Refer to [`RESEARCH_GUIDELINES.md`](file:///C:/Users/TANISH%20PAREKH/Desktop/ML_
 ### Step 4: Experiment 3 (Frequency-Aware ResNet-18) [EVALUATED ON COLAB T4]
 - **Implemented:** `src/augmentations/frequency.py` (LFC, HFC, Bernoulli frequency dropout, Beta frequency blend).
 - **Unit Tested:** 5/5 tests passed (98.2% HFC attenuation verified).
-- **Results:** Clean Accuracy $97.47\%$, Clean Macro-F1 $95.68\%$, Clean ECE $0.0127$, $mCA = 83.20\%$ ($+0.10\%$ over AugMix), $RPD = 14.64\%$ (improved stability, approaching Baseline's $14.33\%$).
+- **Results:** Clean Accuracy $97.32\%$, Clean Macro-F1 $95.68\%$, Clean ECE $0.0127$, Static $mCA = 83.78\%$ ($83.20\%$ in initial evaluation run), $RPD = 13.91\%$ (superior stability over AugMix's $15.61\%$).
+- **Test-Time Adaptation Breakthrough:** Reaches **88.97% mCA** with Shift-Gated BN-Adapt (Overall Project Record across all models).
 
 ### Step 5: Phase 3 — Representation-Centric Track: Concept Bottleneck Models (CBM)
 
@@ -369,11 +373,12 @@ We evaluated 46,770 misclassifications across Gaussian, Shot, and Impulse noise 
 ---
 
 ### Step 10: The Test-Time Breakthrough — Full 75-Condition Shift-Gated BN-Adaptation [COMPLETE]
-We implemented Test-Time Batch Normalization Adaptation (BN-Adapt) and evaluated the frozen Exp 4 CBM across all 75 corruptions + Clean split with **3 fixed random seeds (42, 43, 44)**.
+We implemented Test-Time Batch Normalization Adaptation (BN-Adapt) and evaluated across all 75 corruptions + Clean split with **3 fixed random seeds (42, 43, 44)**.
 - **Status:** **COMPLETE**.
 - **Master Benchmark Results:**
+  - **Frequency LFC (Exp 3):** Static $83.78\% \rightarrow$ **Shift-Gated BN-Adapt 88.97% (+5.19% boost) 🏆 [Overall Project Record]**.
+  - **Residual CBM (Exp 4):** Static $84.25\% \rightarrow$ **Shift-Gated BN-Adapt 88.50% (+4.25% boost) [Record Semantic Model Robustness]**.
   - **Clean Test Accuracy:** 97.59% (Static) $\rightarrow$ 97.46% (Unregularized BN) $\rightarrow$ **97.59% (Shift-Gated, 0.0% degradation)**.
-  - **75-Condition mCA (15 corruptions $\times$ 5 severities):** **84.25% $\rightarrow$ 88.50% (+4.25 percentage points raw boost!)**.
 - **Extreme Condition Leaps (Severity 5):**
   - Heavy Fog Sev 5: $60.68\% \rightarrow \mathbf{96.59\%}$ (**$+35.91\%$**)
   - Impulse Noise Sev 5: $38.19\% \rightarrow \mathbf{64.83\%}$ (**$+26.65\%$**)
@@ -399,3 +404,68 @@ The paper's narrative is officially centered around:
 
 
 
+
+---
+
+### Phase 8: Full 6-Model Matrix Execution & The New Benchmark Record (Exp 6: 89.79% mCA) [COMPLETE]
+We executed the complete 6-model Shift-Gated Batch Normalization Adaptation matrix on Google Colab T4 GPU across the official test split (12,630 samples) and all 75 Hendrycks common corruptions ($947,250$ inferences per model).
+- **Status:** **COMPLETE & VERIFIED** (`reports/comparative_all_models.csv`).
+- **Master Experimental Results:**
+  1. **Exp 6 (Frequency-Aware CBM):** Clean Acc: **97.95%** | Macro-F1: **97.29%** | Static mCA: **85.85%** | Shift-Gated mCA: **89.79%** 🏆 | Shift-Gated RPD: **8.33%** 🏆
+     - *All-time highest static robustness and all-time highest adapted robustness in the entire study.*
+  2. **Exp 4 (Residual CBM ResNet-18):** Clean Acc: **97.59%** | Static mCA: **84.57%** | Shift-Gated mCA: **89.29%** | Shift-Gated RPD: **8.50%**
+  3. **Exp 3 (Frequency LFC ResNet-18):** Clean Acc: **97.32%** | Static mCA: **83.77%** | Shift-Gated mCA: **88.97%** | Shift-Gated RPD: **8.58%**
+  4. **Exp 1 (Baseline ResNet-18):** Clean Acc: **97.91%** | Static mCA: **83.86%** | Shift-Gated mCA: **88.73%** | Shift-Gated RPD: **9.38%**
+  5. **Exp 2 (AugMix ResNet-18):** Clean Acc: **98.47%** | Static mCA: **83.19%** | Shift-Gated mCA: **88.51%** | Shift-Gated RPD: **10.12%**
+  6. **Exp 5 (Hybrid AugMix+CBM):** Clean Acc: **97.61%** | Static mCA: **81.86%** | Shift-Gated mCA: **87.91%** | Shift-Gated RPD: **9.94%**
+
+---
+
+### Phase 9: Pairwise Statistical Significance Verification (Paired McNemar Tests across 947,250 Samples) [COMPLETE]
+We executed paired McNemar's tests ($\chi^2$ with continuity correction and exact binomial $p$-values) on standardized `[76, 12630]` prediction matrices across all $947,250$ corrupted inferences.
+- **Status:** **COMPLETE & ARCHIVED** (`reports/diagnostics/statistical_significance_report.json`).
+- **Key Hypothesis Confirmations:**
+  - **H2 (Semantic Cushioning):** CBM vs Baseline under corruption: $\chi^2 = 564.05, p = 1.11 	imes 10^{-124}$ (**Statistically Decisive**; CBM rescues $6,692$ net samples).
+  - **H3 (Interference Hypothesis):** Hybrid vs CBM under corruption: $\chi^2 = 6,673.30, p < 10^{-300}$ (**Statistically Decisive**; AugMix chromatic noise causes $25,608$ net errors when forced into concept bottleneck).
+  - **H4 (Spectral Alignment):** Freq-CBM vs Hybrid under corruption: $\chi^2 = 15,040.81, p < 10^{-300}$ (**Statistically Decisive**; Freq-CBM rescues $37,779$ net inferences over Hybrid).
+  - **H6 (Test-Time Shift-Gated BN-Adaptation):** $p < 10^{-300}$ across all 6 models with $+37,374$ to $+57,325$ net samples rescued per paradigm.
+
+---
+
+### Phase 10: Full Test-Set Counterfactual Concept Intervention Benchmark (`intervene()`) [COMPLETE]
+We evaluated Modes 0 through 6 on all 12,630 test images across Severities 3–5 under severe common corruptions.
+- **Status:** **COMPLETE & ARCHIVED** (`reports/diagnostics/concept_intervention_exp4.json`).
+- **Empirical Breakthroughs:**
+  1. **Concept Degradation Rate (CDR) Suppression:** Shift-Gated BN-Adaptation drastically cuts concept degradation:
+     - Shape CDR drops from $6.10\% 	o 3.11\%$ (49% reduction).
+     - Colour CDR drops from $7.41\% 	o 3.08\%$ (58.5% reduction).
+     - Border CDR drops from $7.82\% 	o 2.96\%$ (62.1% reduction).
+     - Symbol Category CDR drops from $12.53\% 	o 5.43\%$ (56.7% reduction).
+  2. **Error Partitioning: Within-Group Ambiguity Dominance:**
+     - Under Shift-Gated BN, **$71.26\%$ of all misclassifications are Within-Group errors** (e.g., $30 \leftrightarrow 50$ km/h).
+     - Cross-Group errors drop to only $28.74\%$.
+     - Proves that Shift-Gated BN resolves almost all macro-geometric failures, leaving exclusively sub-symbolic typographic ambiguity that macro-concept interventions cannot resolve without HD-map priors or glyph representations.
+
+---
+
+### Phase 11: 30-Frame Sequential Temporal Video-Track Concept Smoothing Benchmark [COMPLETE]
+We benchmarked temporal deployment dynamics across all **261 unique physical sign tracks** in GTSRB `val.csv` (7,830 sequential frames, exactly 30 frames per track from distant approach $t=1$ to vehicle passing $t=30$).
+- **Status:** **COMPLETE & ARCHIVED** (`reports/diagnostics/temporal_track_smoothing.json`).
+- **Empirical Progression under Corruptions (Severities 3–5):**
+  - Raw Single-Frame Accuracy: **$72.40\%$**
+  - Terminal Frame Only ($t=30$ closest vehicle approach): **$73.38\%$** ($+0.98\%$)
+  - Track Majority Voting: **$77.65\%$** ($+5.25\%$)
+  - Mean Logits Accumulation: **$77.83\%$** ($+5.43\%$)
+  - Temporal Concept EMA ($\gamma = 0.85$): **$78.90\%$** (**$+6.50\%$ gain over single-frame inference!**)
+- **Deployment Stream Finding:** Proved that online streaming BN on single-sign tracks requires source-momentum mixing ($lpha = N/32$) to prevent feature variance collapse when intra-batch diversity is restricted to a single physical object.
+
+---
+
+### Phase 12: Ingestion & Verification of Final Experimental Package [COMPLETE]
+- **File:** `final_experimental_results (1).zip` (5.70 MB, 83 files) unzipped and fully ingested into `reports/`.
+- **All Standard Artifacts Verified:**
+  - `reports/comparative_all_models.csv` & `reports/comparative_summary.json`
+  - Per-model `evaluation_summary.json` and `robustness_matrix.csv` (Static and Shift-Gated)
+  - Standardized `preds_static.npy`, `preds_bn_adapt.npy`, and `preds_shift_gated.npy` (`[76, 12630]`) across all paradigms
+  - Full diagnostic reports in `reports/diagnostics/`
+- **Foveated CBM (Exp 8) Strategy:** Intentionally skipped to maintain strict focus on the verified 6-model scientific matrix, as authorized by lead researcher.

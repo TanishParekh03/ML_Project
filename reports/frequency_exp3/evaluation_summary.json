@@ -1,0 +1,13 @@
+{
+  "clean_accuracy": 0.9731591448931116,
+  "clean_macro_f1": 0.9543474271297706,
+  "clean_ece": 0.01217601144375162,
+  "total_test_samples": 12630,
+  "mean_corruption_accuracy": 0.8377302718395356,
+  "relative_performance_drop": 0.13916415805603,
+  "shift_gated_mca": 0.8896563737133806,
+  "shift_gated_rpd": 0.08580587421690693,
+  "bn_adapt_mca": 0.8895149115861705,
+  "net_gain_shift_gated": 0.05192610187384494,
+  "checkpoint": "/content/ML_Project/reports/frequency_exp3/best_frequency_resnet18.pt"
+}

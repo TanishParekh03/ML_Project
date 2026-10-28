@@ -377,19 +377,12 @@ def main():
         }
         history.append(epoch_record)
 
-        marker = " [*BEST*]" if is_best else ""
-        print(
-            f"Epoch [{epoch:02d}/{args.epochs:02d}] "
-            f"LR: {current_lr:.5f} | "
-            f"Loss: {train_loss:.3f} | "
-            f"Val Acc: {val_acc*100:.2f}% | "
-            f"Val F1: {val_f1*100:.2f}% | "
-            f"Cpt Acc (Sh/Col/Bor/Sym): {val_metrics['val_acc_shape']*100:.1f}%/"
-            f"{val_metrics['val_acc_colour']*100:.1f}%/"
-            f"{val_metrics['val_acc_border']*100:.1f}%/"
-            f"{val_metrics['val_acc_symcat']*100:.1f}% "
-            f"({epoch_duration:.1f}s){marker}"
-        )
+        marker = " [*NEW BEST VAL F1*]" if is_best else ""
+        print(f"\n┌── Epoch [{epoch:02d}/{args.epochs:02d}] ──── Time: {epoch_duration:.1f}s ──── LR: {current_lr:.5f} ───{marker}")
+        print(f"│  Train Loss : {train_loss:.4f} (Task: {train_metrics['train_loss_task']:.4f}, Concepts: {train_metrics['train_loss_concepts']:.4f})")
+        print(f"│  Val Perf   : Acc: {val_acc*100:.2f}% │ Macro-F1: {val_f1*100:.2f}% (Best: {best_val_macro_f1*100:.2f}%)")
+        print(f"│  Concepts   : Shape: {val_metrics['val_acc_shape']*100:.1f}% │ Colour: {val_metrics['val_acc_colour']*100:.1f}% │ Border: {val_metrics['val_acc_border']*100:.1f}% │ Symbol: {val_metrics['val_acc_symcat']*100:.1f}%")
+        print("└" + "─" * 72)
 
     total_duration = time.time() - total_start_time
     print("\n" + "=" * 75)

@@ -1,60 +1,80 @@
-{
-  "clean_accuracy": {
-    "baseline": 0.979097,
-    "augmix": 0.984719,
-    "delta": 0.005622
+[
+  {
+    "model_id": "exp1_baseline",
+    "model_name": "Baseline ResNet-18",
+    "clean_acc": 0.9790973871733967,
+    "clean_f1": 0.9706761836018017,
+    "clean_ece": 0.008222349425770444,
+    "static_mca": 0.8385959356030614,
+    "static_rpd": 0.1435009973583482,
+    "bn_adapt_mca": 0.8873718659276855,
+    "shift_gated_mca": 0.8872958564264978,
+    "shift_gated_rpd": 0.0937613887541107,
+    "net_gain_shift_gated": 0.04869992082343633
   },
-  "clean_macro_f1": {
-    "baseline": 0.970676,
-    "augmix": 0.977781,
-    "delta": 0.007105
+  {
+    "model_id": "exp2_augmix",
+    "model_name": "AugMix ResNet-18",
+    "clean_acc": 0.9847189231987332,
+    "clean_f1": 0.9777813532847905,
+    "clean_ece": 0.007118015417199432,
+    "static_mca": 0.8319324359989442,
+    "static_rpd": 0.15515746026640956,
+    "bn_adapt_mca": 0.8849511744523619,
+    "shift_gated_mca": 0.8850841910794407,
+    "shift_gated_rpd": 0.10118088499370141,
+    "net_gain_shift_gated": 0.05315175508049652
   },
-  "clean_ece": {
-    "baseline": 0.008222,
-    "augmix": 0.007118,
-    "delta": -0.001104
+  {
+    "model_id": "exp3_frequency",
+    "model_name": "Frequency ResNet-18",
+    "clean_acc": 0.9731591448931116,
+    "clean_f1": 0.9543474271297706,
+    "clean_ece": 0.01217601144375162,
+    "static_mca": 0.8377302718395356,
+    "static_rpd": 0.13916415805603,
+    "bn_adapt_mca": 0.8895149115861705,
+    "shift_gated_mca": 0.8896563737133806,
+    "shift_gated_rpd": 0.08580587421690693,
+    "net_gain_shift_gated": 0.05192610187384494
   },
-  "overall_mca": {
-    "baseline": 0.838773,
-    "augmix": 0.831015,
-    "delta": -0.007758
+  {
+    "model_id": "exp4_cbm",
+    "model_name": "Residual CBM ResNet-18",
+    "clean_acc": 0.9758511480601741,
+    "clean_f1": 0.9675455243307465,
+    "clean_ece": 0.011356606705502072,
+    "static_mca": 0.8456605964634468,
+    "static_rpd": 0.1334123056118999,
+    "bn_adapt_mca": 0.892976510952758,
+    "shift_gated_mca": 0.8928846661388231,
+    "shift_gated_rpd": 0.085019607843137,
+    "net_gain_shift_gated": 0.04722406967537629
   },
-  "relative_performance_drop": {
-    "baseline": 0.14332,
-    "augmix": 0.156089,
-    "delta": 0.012769
+  {
+    "model_id": "exp5_hybrid",
+    "model_name": "Hybrid (AugMix+CBM) ResNet-18",
+    "clean_acc": 0.9760886777513856,
+    "clean_f1": 0.9653159155464631,
+    "clean_ece": 0.012669371108591574,
+    "static_mca": 0.8186265505410397,
+    "static_rpd": 0.16131948950897704,
+    "bn_adapt_mca": 0.8791438374241225,
+    "shift_gated_mca": 0.8791026656109789,
+    "shift_gated_rpd": 0.09936188622106883,
+    "net_gain_shift_gated": 0.06047611506993922
   },
-  "modality_mca": {
-    "weather": {
-      "baseline": 0.898263,
-      "augmix": 0.933449,
-      "delta": 0.035186
-    },
-    "blur": {
-      "baseline": 0.948694,
-      "augmix": 0.957375,
-      "delta": 0.008681
-    },
-    "digital": {
-      "baseline": 0.700084,
-      "augmix": 0.691185,
-      "delta": -0.008899
-    },
-    "noise": {
-      "baseline": 0.760772,
-      "augmix": 0.701112,
-      "delta": -0.05966
-    },
-    "non_noise_11": {
-      "baseline": 0.867107,
-      "augmix": 0.878252,
-      "delta": 0.011145
-    },
-    "weather_and_blur_8": {
-      "baseline": 0.929782,
-      "augmix": 0.948403,
-      "delta": 0.018621
-    }
-  },
-  "corruptions_improved_count": "10 of 15"
-}
+  {
+    "model_id": "exp6_freq_cbm",
+    "model_name": "Frequency-Aware CBM",
+    "clean_acc": 0.9794932699920823,
+    "clean_f1": 0.972943511775428,
+    "clean_ece": 0.009816023141074964,
+    "static_mca": 0.8585093692267088,
+    "static_rpd": 0.12351682698784794,
+    "bn_adapt_mca": 0.8979646344681975,
+    "shift_gated_mca": 0.8978939034045923,
+    "shift_gated_rpd": 0.08330773583380477,
+    "net_gain_shift_gated": 0.03938453417788346
+  }
+]

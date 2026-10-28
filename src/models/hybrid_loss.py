@@ -70,12 +70,16 @@ class HybridCBMLoss(nn.Module):
         lambda_aux: float = 0.5,
         lambda_jsd_task: float = 12.0,
         lambda_jsd_cpt: float = 4.0,
+        decouple_concept_jsd: bool = False,
+        zero_colour_jsd: bool = False,
     ) -> None:
         super().__init__()
         self.lambda_c = lambda_c
         self.lambda_aux = lambda_aux
         self.lambda_jsd_task = lambda_jsd_task
         self.lambda_jsd_cpt = lambda_jsd_cpt
+        self.decouple_concept_jsd = decouple_concept_jsd
+        self.zero_colour_jsd = zero_colour_jsd
         self.ce = nn.CrossEntropyLoss()
 
     def forward(
@@ -133,7 +137,12 @@ class HybridCBMLoss(nn.Module):
             outputs_aug1["logits_symcat"],
             outputs_aug2["logits_symcat"],
         )
-        loss_jsd_cpt = (jsd_shape + jsd_colour + jsd_border + jsd_symcat) / 4.0
+        if self.decouple_concept_jsd:
+            loss_jsd_cpt = torch.tensor(0.0, device=loss_task.device, dtype=loss_task.dtype)
+        elif self.zero_colour_jsd:
+            loss_jsd_cpt = (jsd_shape + jsd_border + jsd_symcat) / 3.0
+        else:
+            loss_jsd_cpt = (jsd_shape + jsd_colour + jsd_border + jsd_symcat) / 4.0
 
         # 7. Total multi-scale objective
         total_loss = (

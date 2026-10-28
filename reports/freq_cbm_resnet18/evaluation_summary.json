@@ -1,0 +1,13 @@
+{
+  "clean_accuracy": 0.9794932699920823,
+  "clean_macro_f1": 0.972943511775428,
+  "clean_ece": 0.009816023141074964,
+  "total_test_samples": 12630,
+  "mean_corruption_accuracy": 0.8585093692267088,
+  "relative_performance_drop": 0.12351682698784794,
+  "shift_gated_mca": 0.8978939034045923,
+  "shift_gated_rpd": 0.08330773583380477,
+  "bn_adapt_mca": 0.8979646344681975,
+  "net_gain_shift_gated": 0.03938453417788346,
+  "checkpoint": "/content/ML_Project/reports/freq_cbm_resnet18/best_freq_cbm_resnet18.pt"
+}

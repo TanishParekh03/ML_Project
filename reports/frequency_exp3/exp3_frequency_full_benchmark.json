@@ -1,0 +1,766 @@
+{
+  "sweep_75": {
+    "clean": {
+      "acc_static": 0.9731591448931116,
+      "acc_adapt": 0.9730007917656374,
+      "acc_gated": 0.9731591448931116
+    },
+    "mca_static_75": 0.8378161344242104,
+    "mca_adapt_75": 0.8895339139614674,
+    "mca_gated_75": 0.8896803026304214,
+    "mca_gain_adapt": 0.05171777953725698,
+    "mca_gain_gated": 0.05186416820621098,
+    "conditions": [
+      {
+        "corruption": "gaussian_noise",
+        "severity": 1,
+        "static_mean": 0.9485088413829507,
+        "static_std": 0.00031889801988898084,
+        "adapt_mean": 0.9567432040116125,
+        "adapt_std": 0.0005185242202266659,
+        "gated_mean": 0.9567432040116125,
+        "gain": 0.00823436262866184
+      },
+      {
+        "corruption": "gaussian_noise",
+        "severity": 2,
+        "static_mean": 0.891976774874637,
+        "static_std": 0.001138846609152345,
+        "adapt_mean": 0.9262602269728161,
+        "adapt_std": 0.0010450773224187514,
+        "gated_mean": 0.9262602269728161,
+        "gain": 0.03428345209817907
+      },
+      {
+        "corruption": "gaussian_noise",
+        "severity": 3,
+        "static_mean": 0.7824228028503563,
+        "static_std": 0.0014030122839801616,
+        "adapt_mean": 0.8762998152546846,
+        "adapt_std": 0.0011570498926779425,
+        "gated_mean": 0.8762998152546846,
+        "gain": 0.09387701240432833
+      },
+      {
+        "corruption": "gaussian_noise",
+        "severity": 4,
+        "static_mean": 0.6319609395618897,
+        "static_std": 0.0028783218982334235,
+        "adapt_mean": 0.8004486671945105,
+        "adapt_std": 0.002573204485096044,
+        "gated_mean": 0.8004486671945105,
+        "gain": 0.16848772763262077
+      },
+      {
+        "corruption": "gaussian_noise",
+        "severity": 5,
+        "static_mean": 0.4972552124571126,
+        "static_std": 0.0006144337147966777,
+        "adapt_mean": 0.7211665347057271,
+        "adapt_std": 0.0028484006467631366,
+        "gated_mean": 0.7211665347057271,
+        "gain": 0.22391132224861449
+      },
+      {
+        "corruption": "shot_noise",
+        "severity": 1,
+        "static_mean": 0.9486408023225126,
+        "static_std": 0.001425666807713828,
+        "adapt_mean": 0.9589601477962523,
+        "adapt_std": 0.0016862109099987483,
+        "gated_mean": 0.9589601477962523,
+        "gain": 0.010319345473739694
+      },
+      {
+        "corruption": "shot_noise",
+        "severity": 2,
+        "static_mean": 0.9130113486408024,
+        "static_std": 0.0019792381376883368,
+        "adapt_mean": 0.9430456584850884,
+        "adapt_std": 0.0002447510819608041,
+        "gated_mean": 0.9430456584850884,
+        "gain": 0.03003430984428601
+      },
+      {
+        "corruption": "shot_noise",
+        "severity": 3,
+        "static_mean": 0.8189495909210874,
+        "static_std": 0.001615322644296573,
+        "adapt_mean": 0.9097123251517552,
+        "adapt_std": 0.0004676707613267282,
+        "gated_mean": 0.9097123251517552,
+        "gain": 0.09076273423066772
+      },
+      {
+        "corruption": "shot_noise",
+        "severity": 4,
+        "static_mean": 0.6466086038532594,
+        "static_std": 0.0010269240674765875,
+        "adapt_mean": 0.8462918975983108,
+        "adapt_std": 0.0028564590641116496,
+        "gated_mean": 0.8462918975983108,
+        "gain": 0.19968329374505145
+      },
+      {
+        "corruption": "shot_noise",
+        "severity": 5,
+        "static_mean": 0.436104513064133,
+        "static_std": 0.0036866022887799737,
+        "adapt_mean": 0.7555819477434679,
+        "adapt_std": 0.0006992684771439181,
+        "gated_mean": 0.7555819477434679,
+        "gain": 0.31947743467933487
+      },
+      {
+        "corruption": "impulse_noise",
+        "severity": 1,
+        "static_mean": 0.8083663235682238,
+        "static_std": 0.00161661576469923,
+        "adapt_mean": 0.8698337292161521,
+        "adapt_std": 0.0023919535624961218,
+        "gated_mean": 0.8698337292161521,
+        "gain": 0.0614674056479283
+      },
+      {
+        "corruption": "impulse_noise",
+        "severity": 2,
+        "static_mean": 0.695328582739509,
+        "static_std": 0.0021837043645751278,
+        "adapt_mean": 0.817946687780417,
+        "adapt_std": 0.0028710527851089625,
+        "gated_mean": 0.817946687780417,
+        "gain": 0.12261810504090798
+      },
+      {
+        "corruption": "impulse_noise",
+        "severity": 3,
+        "static_mean": 0.6139878595935603,
+        "static_std": 0.003903724889967034,
+        "adapt_mean": 0.7773291105832674,
+        "adapt_std": 0.0027920889217076974,
+        "gated_mean": 0.7773291105832674,
+        "gain": 0.1633412509897071
+      },
+      {
+        "corruption": "impulse_noise",
+        "severity": 4,
+        "static_mean": 0.48176299815254686,
+        "static_std": 0.0012169059787171762,
+        "adapt_mean": 0.707680126682502,
+        "adapt_std": 0.0031953081962019683,
+        "gated_mean": 0.707680126682502,
+        "gain": 0.22591712852995516
+      },
+      {
+        "corruption": "impulse_noise",
+        "severity": 5,
+        "static_mean": 0.36785431512272365,
+        "static_std": 0.0016200590396646007,
+        "adapt_mean": 0.6366323568223806,
+        "adapt_std": 0.002144436322594017,
+        "gated_mean": 0.6366323568223806,
+        "gain": 0.26877804169965697
+      },
+      {
+        "corruption": "defocus_blur",
+        "severity": 1,
+        "static_mean": 0.9746634996041171,
+        "static_std": 0.0,
+        "adapt_mean": 0.9728424386381631,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9746634996041171,
+        "gain": -0.0018210609659540244
+      },
+      {
+        "corruption": "defocus_blur",
+        "severity": 2,
+        "static_mean": 0.9744259699129058,
+        "static_std": 0.0,
+        "adapt_mean": 0.9717339667458432,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9717339667458432,
+        "gain": -0.002692003167062529
+      },
+      {
+        "corruption": "defocus_blur",
+        "severity": 3,
+        "static_mean": 0.9677751385589866,
+        "static_std": 0.0,
+        "adapt_mean": 0.967458432304038,
+        "adapt_std": 0.0,
+        "gated_mean": 0.967458432304038,
+        "gain": -0.0003167062549485067
+      },
+      {
+        "corruption": "defocus_blur",
+        "severity": 4,
+        "static_mean": 0.9539192399049882,
+        "static_std": 0.0,
+        "adapt_mean": 0.9570071258907363,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9570071258907363,
+        "gain": 0.003087885985748162
+      },
+      {
+        "corruption": "defocus_blur",
+        "severity": 5,
+        "static_mean": 0.8961203483768805,
+        "static_std": 0.0,
+        "adapt_mean": 0.915439429928741,
+        "adapt_std": 0.0,
+        "gated_mean": 0.915439429928741,
+        "gain": 0.019319081551860573
+      },
+      {
+        "corruption": "glass_blur",
+        "severity": 1,
+        "static_mean": 0.970044866719451,
+        "static_std": 0.0003560500808453937,
+        "adapt_mean": 0.9690419635787807,
+        "adapt_std": 0.0008453743667483501,
+        "gated_mean": 0.970044866719451,
+        "gain": -0.0010029031406703082
+      },
+      {
+        "corruption": "glass_blur",
+        "severity": 2,
+        "static_mean": 0.9625230931644234,
+        "static_std": 0.0007352012814559947,
+        "adapt_mean": 0.9607020321984692,
+        "adapt_std": 0.0005021456212836826,
+        "gated_mean": 0.9607020321984692,
+        "gain": -0.0018210609659542465
+      },
+      {
+        "corruption": "glass_blur",
+        "severity": 3,
+        "static_mean": 0.9519134336236474,
+        "static_std": 0.0006475504959823605,
+        "adapt_mean": 0.9526788070731064,
+        "adapt_std": 0.0005225386612093832,
+        "gated_mean": 0.9526788070731064,
+        "gain": 0.0007653734494589282
+      },
+      {
+        "corruption": "glass_blur",
+        "severity": 4,
+        "static_mean": 0.902507257851676,
+        "static_std": 0.0008608871169332593,
+        "adapt_mean": 0.9112430720506731,
+        "adapt_std": 0.0010404013377897545,
+        "gated_mean": 0.9112430720506731,
+        "gain": 0.00873581419899716
+      },
+      {
+        "corruption": "glass_blur",
+        "severity": 5,
+        "static_mean": 0.7717339667458433,
+        "static_std": 0.0016721070532021156,
+        "adapt_mean": 0.7863552388493007,
+        "adapt_std": 0.0007820286297191178,
+        "gated_mean": 0.7863552388493007,
+        "gain": 0.014621272103457428
+      },
+      {
+        "corruption": "motion_blur",
+        "severity": 1,
+        "static_mean": 0.9734758511480601,
+        "static_std": 0.0003420818526475719,
+        "adapt_mean": 0.9725785167590392,
+        "adapt_std": 0.0003676006407280093,
+        "gated_mean": 0.9734758511480601,
+        "gain": -0.000897334389020954
+      },
+      {
+        "corruption": "motion_blur",
+        "severity": 2,
+        "static_mean": 0.9714700448667194,
+        "static_std": 0.0002985935206910462,
+        "adapt_mean": 0.9705727104776987,
+        "adapt_std": 0.00043044355846662963,
+        "gated_mean": 0.9705727104776987,
+        "gain": -0.0008973343890207319
+      },
+      {
+        "corruption": "motion_blur",
+        "severity": 3,
+        "static_mean": 0.9619160728424386,
+        "static_std": 0.0010098245695280678,
+        "adapt_mean": 0.9631037212984955,
+        "adapt_std": 0.00025858957432388043,
+        "gated_mean": 0.9631037212984955,
+        "gain": 0.0011876484560569
+      },
+      {
+        "corruption": "motion_blur",
+        "severity": 4,
+        "static_mean": 0.9438374241224597,
+        "static_std": 0.0008535741160620588,
+        "adapt_mean": 0.9495117445236211,
+        "adapt_std": 0.0003950020994218637,
+        "gated_mean": 0.9495117445236211,
+        "gain": 0.005674320401161337
+      },
+      {
+        "corruption": "motion_blur",
+        "severity": 5,
+        "static_mean": 0.872763262074426,
+        "static_std": 0.0005635829111655494,
+        "adapt_mean": 0.8874373185537081,
+        "adapt_std": 0.0011388466091523564,
+        "gated_mean": 0.8874373185537081,
+        "gain": 0.014674056479282105
+      },
+      {
+        "corruption": "zoom_blur",
+        "severity": 1,
+        "static_mean": 0.9744259699129058,
+        "static_std": 0.0,
+        "adapt_mean": 0.9716547901821061,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9744259699129058,
+        "gain": -0.0027711797307996555
+      },
+      {
+        "corruption": "zoom_blur",
+        "severity": 2,
+        "static_mean": 0.975059382422803,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9722882026920031,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9722882026920031,
+        "gain": -0.0027711797307998776
+      },
+      {
+        "corruption": "zoom_blur",
+        "severity": 3,
+        "static_mean": 0.9745051464766429,
+        "static_std": 0.0,
+        "adapt_mean": 0.9725257323832146,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9725257323832146,
+        "gain": -0.001979414093428278
+      },
+      {
+        "corruption": "zoom_blur",
+        "severity": 4,
+        "static_mean": 0.9735550277117974,
+        "static_std": 0.0,
+        "adapt_mean": 0.971575613618369,
+        "adapt_std": 0.0,
+        "gated_mean": 0.971575613618369,
+        "gain": -0.001979414093428389
+      },
+      {
+        "corruption": "zoom_blur",
+        "severity": 5,
+        "static_mean": 0.9738717339667459,
+        "static_std": 0.0,
+        "adapt_mean": 0.9721298495645289,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9721298495645289,
+        "gain": -0.0017418844022170088
+      },
+      {
+        "corruption": "snow",
+        "severity": 1,
+        "static_mean": 0.9281076801266824,
+        "static_std": 0.001087537491582824,
+        "adapt_mean": 0.9434943256795988,
+        "adapt_std": 0.001045077322418714,
+        "gated_mean": 0.9434943256795988,
+        "gain": 0.015386645552916356
+      },
+      {
+        "corruption": "snow",
+        "severity": 2,
+        "static_mean": 0.8859329638427026,
+        "static_std": 0.0024704554075136633,
+        "adapt_mean": 0.9171285299551334,
+        "adapt_std": 0.0012373405299267663,
+        "gated_mean": 0.9171285299551334,
+        "gain": 0.031195566112430795
+      },
+      {
+        "corruption": "snow",
+        "severity": 3,
+        "static_mean": 0.8498812351543942,
+        "static_std": 0.0015555726606800485,
+        "adapt_mean": 0.8956716811823701,
+        "adapt_std": 0.0016874497084344788,
+        "gated_mean": 0.8956716811823701,
+        "gain": 0.045790446027975884
+      },
+      {
+        "corruption": "snow",
+        "severity": 4,
+        "static_mean": 0.8061229875956717,
+        "static_std": 0.0008412445210086392,
+        "adapt_mean": 0.8708102401689098,
+        "adapt_std": 0.0011015379654108898,
+        "gated_mean": 0.8708102401689098,
+        "gain": 0.06468725257323815
+      },
+      {
+        "corruption": "snow",
+        "severity": 5,
+        "static_mean": 0.7711797307996834,
+        "static_std": 0.0019275333477445109,
+        "adapt_mean": 0.8553708102401689,
+        "adapt_std": 0.0006851810496567389,
+        "gated_mean": 0.8553708102401689,
+        "gain": 0.08419107944048554
+      },
+      {
+        "corruption": "frost",
+        "severity": 1,
+        "static_mean": 0.8866983372921614,
+        "static_std": 0.0005049122847640339,
+        "adapt_mean": 0.9081815782528372,
+        "adapt_std": 0.0012837568231211607,
+        "gated_mean": 0.9081815782528372,
+        "gain": 0.021483240960675776
+      },
+      {
+        "corruption": "frost",
+        "severity": 2,
+        "static_mean": 0.7415676959619951,
+        "static_std": 0.0002962515745663978,
+        "adapt_mean": 0.8032462391132226,
+        "adapt_std": 0.0021596487247800174,
+        "gated_mean": 0.8032462391132226,
+        "gain": 0.06167854315122745
+      },
+      {
+        "corruption": "frost",
+        "severity": 3,
+        "static_mean": 0.5745315386645553,
+        "static_std": 0.0017825964413584652,
+        "adapt_mean": 0.6625494853523356,
+        "adapt_std": 0.0007864694867116152,
+        "gated_mean": 0.6625494853523356,
+        "gain": 0.08801794668778029
+      },
+      {
+        "corruption": "frost",
+        "severity": 4,
+        "static_mean": 0.39815254684613355,
+        "static_std": 0.00020781229543447033,
+        "adapt_mean": 0.5006861968857218,
+        "adapt_std": 0.0013079452830154525,
+        "gated_mean": 0.5006861968857218,
+        "gain": 0.10253365003958825
+      },
+      {
+        "corruption": "frost",
+        "severity": 5,
+        "static_mean": 0.2639482713116918,
+        "static_std": 0.0014774911588575751,
+        "adapt_mean": 0.3679598838743732,
+        "adapt_std": 0.0013900442419914043,
+        "gated_mean": 0.3679598838743732,
+        "gain": 0.10401161256268138
+      },
+      {
+        "corruption": "fog",
+        "severity": 1,
+        "static_mean": 0.9680126682501978,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9720506730007917,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9720506730007917,
+        "gain": 0.004038004750593904
+      },
+      {
+        "corruption": "fog",
+        "severity": 2,
+        "static_mean": 0.9529691211401424,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9707046714172605,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9707046714172605,
+        "gain": 0.01773555027711804
+      },
+      {
+        "corruption": "fog",
+        "severity": 3,
+        "static_mean": 0.8883610451306413,
+        "static_std": 0.0,
+        "adapt_mean": 0.971021377672209,
+        "adapt_std": 0.0,
+        "gated_mean": 0.971021377672209,
+        "gain": 0.08266033254156768
+      },
+      {
+        "corruption": "fog",
+        "severity": 4,
+        "static_mean": 0.7553444180522565,
+        "static_std": 0.0,
+        "adapt_mean": 0.970387965162312,
+        "adapt_std": 0.0,
+        "gated_mean": 0.970387965162312,
+        "gain": 0.21504354711005547
+      },
+      {
+        "corruption": "fog",
+        "severity": 5,
+        "static_mean": 0.5483768804433887,
+        "static_std": 0.0,
+        "adapt_mean": 0.9552652414885193,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9552652414885193,
+        "gain": 0.4068883610451306
+      },
+      {
+        "corruption": "brightness",
+        "severity": 1,
+        "static_mean": 0.9677751385589866,
+        "static_std": 0.0,
+        "adapt_mean": 0.9694378463974663,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9694378463974663,
+        "gain": 0.001662707838479771
+      },
+      {
+        "corruption": "brightness",
+        "severity": 2,
+        "static_mean": 0.9568487727632621,
+        "static_std": 0.0,
+        "adapt_mean": 0.963420427553444,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.963420427553444,
+        "gain": 0.006571654790181958
+      },
+      {
+        "corruption": "brightness",
+        "severity": 3,
+        "static_mean": 0.9370546318289786,
+        "static_std": 0.0,
+        "adapt_mean": 0.9528899445764054,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9528899445764054,
+        "gain": 0.015835312747426777
+      },
+      {
+        "corruption": "brightness",
+        "severity": 4,
+        "static_mean": 0.9049881235154394,
+        "static_std": 0.0,
+        "adapt_mean": 0.9338083927157562,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9338083927157562,
+        "gain": 0.028820269200316773
+      },
+      {
+        "corruption": "brightness",
+        "severity": 5,
+        "static_mean": 0.8537608867775138,
+        "static_std": 0.0,
+        "adapt_mean": 0.9007125890736342,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9007125890736342,
+        "gain": 0.046951702296120335
+      },
+      {
+        "corruption": "contrast",
+        "severity": 1,
+        "static_mean": 0.9727632620744261,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9719714964370546,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9727632620744261,
+        "gain": -0.0007917656373714888
+      },
+      {
+        "corruption": "contrast",
+        "severity": 2,
+        "static_mean": 0.966270783847981,
+        "static_std": 0.0,
+        "adapt_mean": 0.9694378463974663,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9694378463974663,
+        "gain": 0.003167062549485289
+      },
+      {
+        "corruption": "contrast",
+        "severity": 3,
+        "static_mean": 0.947347585114806,
+        "static_std": 0.0,
+        "adapt_mean": 0.963420427553444,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.963420427553444,
+        "gain": 0.016072842438638046
+      },
+      {
+        "corruption": "contrast",
+        "severity": 4,
+        "static_mean": 0.9019794140934283,
+        "static_std": 0.0,
+        "adapt_mean": 0.9529691211401424,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9529691211401424,
+        "gain": 0.05098970704671413
+      },
+      {
+        "corruption": "contrast",
+        "severity": 5,
+        "static_mean": 0.8039588281868567,
+        "static_std": 0.0,
+        "adapt_mean": 0.9285827395091054,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9285827395091054,
+        "gain": 0.1246239113222487
+      },
+      {
+        "corruption": "elastic_transform",
+        "severity": 1,
+        "static_mean": 0.969200316706255,
+        "static_std": 0.00023308949238128927,
+        "adapt_mean": 0.9689363948271312,
+        "adapt_std": 0.00041562459086892184,
+        "gated_mean": 0.9692267088941673,
+        "gain": -0.00026392187912371856
+      },
+      {
+        "corruption": "elastic_transform",
+        "severity": 2,
+        "static_mean": 0.9520190023752969,
+        "static_std": 0.0005745986027204331,
+        "adapt_mean": 0.9532330430192664,
+        "adapt_std": 0.0002447510819608041,
+        "gated_mean": 0.9532330430192664,
+        "gain": 0.0012140406439694607
+      },
+      {
+        "corruption": "elastic_transform",
+        "severity": 3,
+        "static_mean": 0.890366851411982,
+        "static_std": 0.0012557801270382779,
+        "adapt_mean": 0.9035629453681712,
+        "adapt_std": 0.0008745337305769918,
+        "gated_mean": 0.9035629453681712,
+        "gain": 0.013196093956189148
+      },
+      {
+        "corruption": "elastic_transform",
+        "severity": 4,
+        "static_mean": 0.7222750065980469,
+        "static_std": 0.0009704289422459464,
+        "adapt_mean": 0.7614674056479283,
+        "adapt_std": 0.0021992786124043215,
+        "gated_mean": 0.7614674056479283,
+        "gain": 0.039192399049881366
+      },
+      {
+        "corruption": "elastic_transform",
+        "severity": 5,
+        "static_mean": 0.4811031934547374,
+        "static_std": 0.0036135136622422407,
+        "adapt_mean": 0.5453417788334652,
+        "adapt_std": 0.0034899614658159884,
+        "gated_mean": 0.5453417788334652,
+        "gain": 0.06423858537872784
+      },
+      {
+        "corruption": "pixelate",
+        "severity": 1,
+        "static_mean": 0.9651623119556612,
+        "static_std": 0.0,
+        "adapt_mean": 0.962628661916073,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9651623119556612,
+        "gain": -0.0025336500395881645
+      },
+      {
+        "corruption": "pixelate",
+        "severity": 2,
+        "static_mean": 0.9726049089469516,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9707838479809977,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9707838479809977,
+        "gain": -0.0018210609659539134
+      },
+      {
+        "corruption": "pixelate",
+        "severity": 3,
+        "static_mean": 0.9413301662707839,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9433095803642123,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9433095803642123,
+        "gain": 0.001979414093428389
+      },
+      {
+        "corruption": "pixelate",
+        "severity": 4,
+        "static_mean": 0.8648456057007126,
+        "static_std": 0.0,
+        "adapt_mean": 0.8795724465558195,
+        "adapt_std": 0.0,
+        "gated_mean": 0.8795724465558195,
+        "gain": 0.014726840855106893
+      },
+      {
+        "corruption": "pixelate",
+        "severity": 5,
+        "static_mean": 0.592953285827395,
+        "static_std": 0.0,
+        "adapt_mean": 0.6252573238321457,
+        "adapt_std": 0.0,
+        "gated_mean": 0.6252573238321457,
+        "gain": 0.03230403800475068
+      },
+      {
+        "corruption": "jpeg_compression",
+        "severity": 1,
+        "static_mean": 0.9657957244655582,
+        "static_std": 0.0,
+        "adapt_mean": 0.9649247822644499,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.9657957244655582,
+        "gain": -0.0008709422011082824
+      },
+      {
+        "corruption": "jpeg_compression",
+        "severity": 2,
+        "static_mean": 0.9631037212984955,
+        "static_std": 1.1102230246251565e-16,
+        "adapt_mean": 0.9625494853523358,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9625494853523358,
+        "gain": -0.0005542359461597757
+      },
+      {
+        "corruption": "jpeg_compression",
+        "severity": 3,
+        "static_mean": 0.9494061757719715,
+        "static_std": 0.0,
+        "adapt_mean": 0.9504354711005543,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9504354711005543,
+        "gain": 0.0010292953285827577
+      },
+      {
+        "corruption": "jpeg_compression",
+        "severity": 4,
+        "static_mean": 0.9247822644497229,
+        "static_std": 0.0,
+        "adapt_mean": 0.9281868566904197,
+        "adapt_std": 0.0,
+        "gated_mean": 0.9281868566904197,
+        "gain": 0.00340459224069678
+      },
+      {
+        "corruption": "jpeg_compression",
+        "severity": 5,
+        "static_mean": 0.8460807600950119,
+        "static_std": 0.0,
+        "adapt_mean": 0.8518606492478226,
+        "adapt_std": 1.1102230246251565e-16,
+        "gated_mean": 0.8518606492478226,
+        "gain": 0.005779889152810691
+      }
+    ]
+  }
+}
