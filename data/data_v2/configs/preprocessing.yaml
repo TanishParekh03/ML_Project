@@ -1,0 +1,36 @@
+# Canonical Preprocessing Configuration (Version 2.0 - BelgiumTSC)
+# Frozen scientific contract matching German GTSRB master_v1.
+
+dataset_name: "BelgiumTSC (Belgium Traffic Sign Classification Benchmark)"
+preprocessing_version: "v1_roi_margin10_letterbox64"
+
+input_resolution:
+  target_height: 64
+  target_width: 64
+  channels: 3
+  color_space: "RGB"
+
+roi_crop:
+  enabled: true
+  coordinate_convention: "inclusive_xyxy_zero_indexed"
+  margin_ratio: 0.10
+  clamp_to_image_bounds: true
+
+scaling_and_aspect_ratio:
+  policy: "proportional_letterbox"
+  interpolation: "bilinear"
+  scale_factor_rule: "min(target_w / crop_w, target_h / crop_h)"
+
+padding:
+  policy: "symmetric_zero_padding"
+  fill_value: [0, 0, 0]
+  alignment: "center"
+
+splits:
+  source_dataset: "BelgiumTSC (KUL VISICS / ETH Zurich)"
+  train_split_policy: "stratified_group_kfold_by_pole"
+  train_ratio: 0.80
+  val_ratio: 0.20
+  split_seed: 42
+  grouping_key: "class_id + '_' + pole_id"
+  test_split_policy: "held_out_official_belgiumtsc_test"

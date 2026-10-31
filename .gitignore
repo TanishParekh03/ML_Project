@@ -7,6 +7,9 @@ __pycache__/
 # Raw dataset archives and large binary generated images
 *.zip
 data/master_v1/images/
+data/data_v2/images/
+data/data_v3/images/
+chinese/
 archive/
 belgium/
 german/
