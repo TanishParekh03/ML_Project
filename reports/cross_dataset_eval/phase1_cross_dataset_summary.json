@@ -1,0 +1,90 @@
+{
+  "Belgium (BelgiumTSC)": {
+    "baseline_static": {
+      "linear_probe_accuracy": 0.8914759273875296,
+      "linear_probe_macro_f1": 0.7043234109025506
+    },
+    "baseline_bn_adapt": {
+      "linear_probe_accuracy": 0.43764798737174426,
+      "linear_probe_macro_f1": 0.34595418114257553
+    },
+    "cbm_static": {
+      "linear_probe_accuracy": 0.8891081294396211,
+      "linear_probe_macro_f1": 0.6872650311510774,
+      "concept_shape_acc": 0.851223362273086,
+      "concept_shape_f1": 0.7731800718114847,
+      "concept_colour_acc": 0.941594317284925,
+      "concept_colour_f1": 0.8884646081826348,
+      "concept_border_acc": 0.9104183109707972,
+      "concept_border_f1": 0.6145882992496208,
+      "concept_symbol_acc": 0.7202052091554854,
+      "concept_symbol_f1": 0.636920844236713,
+      "concept_mean_acc": 0.8558602999210734,
+      "concept_mean_macro_f1": 0.7282884558701134,
+      "concept_exact_match_rate": 0.681136543014996,
+      "zero_shot_ontology_acc": 0.3745067087608524,
+      "zero_shot_ontology_f1": 0.11759422231656867
+    },
+    "cbm_bn_adapt": {
+      "linear_probe_accuracy": 0.4151539068666141,
+      "linear_probe_macro_f1": 0.3295454383258898,
+      "concept_shape_acc": 0.4992107340173639,
+      "concept_shape_f1": 0.2390193829917359,
+      "concept_colour_acc": 0.6041831097079716,
+      "concept_colour_f1": 0.37527832421099105,
+      "concept_border_acc": 0.6227308602999211,
+      "concept_border_f1": 0.3317344679007245,
+      "concept_symbol_acc": 0.2857142857142857,
+      "concept_symbol_f1": 0.24193768951132627,
+      "concept_mean_acc": 0.5029597474348856,
+      "concept_mean_macro_f1": 0.2969924661536944,
+      "concept_exact_match_rate": 0.19613259668508287,
+      "zero_shot_ontology_acc": 0.14719810576164166,
+      "zero_shot_ontology_f1": 0.035613598623041864
+    }
+  },
+  "China (TSRD)": {
+    "baseline_static": {
+      "linear_probe_accuracy": 0.9348044132397192,
+      "linear_probe_macro_f1": 0.8963557333519097
+    },
+    "baseline_bn_adapt": {
+      "linear_probe_accuracy": 0.5366098294884654,
+      "linear_probe_macro_f1": 0.6113599372890354
+    },
+    "cbm_static": {
+      "linear_probe_accuracy": 0.9428284854563691,
+      "linear_probe_macro_f1": 0.9472602978339187,
+      "concept_shape_acc": 0.8605817452357071,
+      "concept_shape_f1": 0.33650281693090667,
+      "concept_colour_acc": 0.6028084252758275,
+      "concept_colour_f1": 0.2987660073461017,
+      "concept_border_acc": 0.6188565697091274,
+      "concept_border_f1": 0.4934230007587956,
+      "concept_symbol_acc": 0.5576730190571715,
+      "concept_symbol_f1": 0.32505002054083476,
+      "concept_mean_acc": 0.6599799398194583,
+      "concept_mean_macro_f1": 0.3634354613941597,
+      "concept_exact_match_rate": 0.37612838515546637,
+      "zero_shot_ontology_acc": 0.015045135406218655,
+      "zero_shot_ontology_f1": 0.0027136679126242074
+    },
+    "cbm_bn_adapt": {
+      "linear_probe_accuracy": 0.5150451354062187,
+      "linear_probe_macro_f1": 0.588061555528146,
+      "concept_shape_acc": 0.6248746238716149,
+      "concept_shape_f1": 0.21305515745174972,
+      "concept_colour_acc": 0.4428284854563691,
+      "concept_colour_f1": 0.20592893970215242,
+      "concept_border_acc": 0.4764292878635908,
+      "concept_border_f1": 0.26870928734299737,
+      "concept_symbol_acc": 0.3214643931795386,
+      "concept_symbol_f1": 0.20667849340994165,
+      "concept_mean_acc": 0.4663991975927783,
+      "concept_mean_macro_f1": 0.2235929694767103,
+      "concept_exact_match_rate": 0.19157472417251756,
+      "zero_shot_ontology_acc": 0.01354062186559679,
+      "zero_shot_ontology_f1": 0.0033328621093655056
+    }
+  }
+}

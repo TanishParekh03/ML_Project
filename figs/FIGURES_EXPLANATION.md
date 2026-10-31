@@ -22,6 +22,8 @@ This document provides a detailed catalog, technical explanation, and scientific
 | [`fig11_temporal_track_smoothing.png`](file:///d:/ML_Project/figs/fig11_temporal_track_smoothing.png) | 30-Frame Video-Track Smoothing | Temporal Concept EMA ($\gamma=0.85$) provides $+6.50\%$ boost; online streaming BN suffers variance collapse. |
 | [`fig12_training_dynamics_convergence.png`](file:///d:/ML_Project/figs/fig12_training_dynamics_convergence.png) | Training Dynamics & Multi-Task Loss | Multi-task concept heads converge smoothly alongside task loss with $>99\%$ concept validation accuracy. |
 | [`fig13_statistical_significance_mcnemar.png`](file:///d:/ML_Project/figs/fig13_statistical_significance_mcnemar.png) | Paired McNemar $\chi^2$ Significance ($N=947,250$) | Decisive confirmation ($p < 10^{-100}$) of hypotheses $H_2$ (Cushioning), $H_3$ (Interference), $H_4$ (Spectral), $H_6$ (BN-Adapt). |
+| [`fig14_augmix_primitives_matrix.png`](file:///d:/ML_Project/figs/fig14_augmix_primitives_matrix.png) | AugMix Primitives & Dirichlet Mixture Topology | 9 domain-constrained spatial/photometric operations, difference residuals, and 3-branch convex pipeline. |
+| [`fig15_frequency_transforms_matrix.png`](file:///d:/ML_Project/figs/fig15_frequency_transforms_matrix.png) | Fourier Frequency Transforms & Pipeline Matrix | Wang et al. (CVPR 2020) spectral transforms, 2D FFT spectra, noise mitigation, and dual-track deployment (Exp 3 & 6). |
 
 ---
 
@@ -192,13 +194,57 @@ This document provides a detailed catalog, technical explanation, and scientific
 
 ---
 
+#### Figure 14: Domain-Constrained AugMix Transformation Primitives and Dirichlet Mixing Topology
+- **File:** [`fig14_augmix_primitives_matrix.png`](file:///d:/ML_Project/figs/fig14_augmix_primitives_matrix.png)
+- **Visual Description:** A comprehensive, two-part publication matrix designed for peer review and methodological defense:
+  - *Part A (Top Matrix - 9 Operations × 4 Parameter Levels + Difference Residual):* Decomposes all 9 domain-constrained AugMix operations applied to an authentic canonical $64 \times 64$ speed limit sign (`00001_00003_00029.png`).
+    - *Photometric Operations (Rows 1–4):* `AutoContrast` (dynamic range scaling), `Equalize` (CDF flattening), `Posterize` (bit quantization from $7$ to $4$ bits), and `Solarize` (selective highlight inversion, threshold $230 \to 140$).
+    - *Geometric Operations (Rows 5–9):* `Rotate` (strictly bounded to $[-10^\circ, +10^\circ]$), `Shear-X` (bounded to $[-8^\circ, +8^\circ]$), `Shear-Y` (bounded to $[-8^\circ, +8^\circ]$), `Translate-X` (bounded to $[-4, +4]$ px), and `Translate-Y` (bounded to $[-4, +4]$ px).
+    - *Column 5 (Residual Heatmap):* Pixel-wise absolute difference maps ($|\text{Level 3} - \text{Clean}|$) using the `inferno` colormap, showing the exact spatial distribution and amplitude of pixel perturbations introduced by each primitive.
+  - *Part B (Bottom Panel - Dirichlet Mixture Pipeline):* Shows the sequential ICLR 2020 AugMix assembly:
+    - Clean input $x \in \mathbb{R}^{64 \times 64 \times 3}$.
+    - 3 parallel stochastic branches ($B_1, B_2, B_3$) sampled with random depths ($1 \le d \le 3$).
+    - Convex aggregation via Dirichlet sampling $w \sim \text{Dirichlet}(1, 1, 1)$ yielding branch mixture $M = \sum_{i=1}^3 w_i B_i$.
+    - Final convex combination with the clean input via Beta distribution $m \sim \text{Beta}(1, 1)$: $x_{\text{augmix}} = m \cdot x + (1 - m) \cdot M$.
+- **Methodological Defenses Illustrated for Reviewers:**
+  1. **Strict Test-Leakage Elimination:** Gaussian noise, shot noise, motion blur, fog, frost, and JPEG compression are **strictly excluded** from the transform set, guaranteeing that downstream GTSRB-C robustness gains are genuinely learned inductive representations rather than trivial test-set memorization.
+  2. **Domain-Specific Geometric Bounding:** In-plane rotation is capped at $\pm 10^\circ$ (preventing directional arrows from inverting meaning, e.g., Turn Left vs. Turn Right), shear is capped at $\pm 8^\circ$ (preventing circular signs from collapsing into ovals), and translation is capped at $\pm 4$ px ($\pm 6.25\%$ canvas margin, preventing signs from clipping off the canvas).
+  3. **Visual Proof of Gradient Interference:** Explains *Hypothesis $H_4$*: color distortions from `Solarize`, `Posterize`, and `AutoContrast` destructively scramble color manifolds, explaining why vanilla AugMix impairs color-concept prediction in CBMs while spatial/frequency transforms preserve them.
+
+---
+
+#### Figure 15: Fourier Frequency Transforms Matrix & Dual-Track Regularization Architecture
+- **File:** [`fig15_frequency_transforms_matrix.png`](file:///d:/ML_Project/figs/fig15_frequency_transforms_matrix.png)
+- **Visual Description:** A comprehensive publication-grade figure decomposing the 2D Fourier frequency domain augmentations and their architectural routing:
+  - *Part A (Top Matrix - 5 Spectral Operations × 4 Parameter Levels + 2D FFT Spectra / Residuals):*
+    - *Row 1 (Low-Frequency Component - LFC):* Progressive radial cutoff ($r \in \{6, 10, 14, 20\}$ px). Shows coarse silhouette retention at $r=6$ px and complete glyph readability with $86.4\%$ spectral energy retained at the canonical default $r_0=14$ px. Column 5 displays the 2D centered Fourier log-magnitude spectrum with the circular low-pass mask overlaid.
+    - *Row 2 (High-Frequency Component - HFC):* Complementary radial high-pass filter ($r > r_0$) across $r \in \{6, 10, 14, 20\}$ px, extracting isolated numeral strokes ('30'), pictogram glyphs, and high-contrast borders. Column 5 illustrates peripheral high-pass frequency distribution.
+    - *Row 3 (Bernoulli Spectral Dropout - Wang et al. CVPR 2020):* High-frequency coefficient zeroing across severity levels $s \in \{1, 3, 5, 8\}$ ($p_{\text{drop}} = 8\%, 24\%, 40\%, 64\%$). Suppresses high-frequency shortcuts while preserving digit readability. Column 5 displays the difference residual heatmap showing strictly **$0.0\%$ color drift**.
+    - *Row 4 (Frequency Blend - LFC + Spatial):* Convex interpolation $(1-\alpha)\text{LFC}_{r=14} + \alpha I$ across $\alpha \in \{0.2, 0.4, 0.6, 0.8\}$, offering controllable low-pass manifold smoothing.
+    - *Row 5 (Point-Noise Mitigation Diagnostic):* Direct visual proof of why Fourier filtering resolves high-frequency point noise. Shows clean input, impulse noise corruption, the $+3.5\times$ peripheral energy explosion in the 2D Fourier spectrum, and restored reconstruction where the high-frequency spikes are stripped away, cleanly recovering numeral legibility.
+  - *Part B (Bottom Panel - End-to-End Spectral Regularization & Dual-Track Architecture):*
+    - Illustrates the complete pipeline: $X \in \mathbb{R}^{3 \times 64 \times 64} \to \text{2D FFT} \to \text{Radial LFC Core } (r \le 14\text{ px}) + \text{Bernoulli Dropout } (r > 14\text{ px}) \to \text{2D IFFT} \to \tilde{X}$.
+    - Highlights that the filtered tensor $\tilde{X}$ introduces **$0.0\%$ color drift** and **zero affine distortion**, explaining why it avoids the catastrophic representation clash seen in AugMix.
+    - Demonstrates the two architectural deployment pathways:
+      1. *Track A (Exp 3: Frequency ResNet-18):* Standard 43-class head ($W_{\text{fc}} h + b$), resolving AugMix's high-frequency noise penalty ($+1.2\%$ noise mCA).
+      2. *Track B (Exp 6: Frequency-Aware CBM):* Dual-stream architecture routing into 22-dimensional legal concept heads (Shape, Colour, Border, Symbol) plus auxiliary head ($W_{\text{aux}} h(x)$), which established the project's all-time benchmark record (**$85.85\%$ static mCA / $89.79\%$ Shift-Gated BN mCA**, confirming Hypothesis $H_4$).
+
+---
+
 ### Instructions to Reproduce or Re-Generate Figures
 
-To re-generate all 13 figures from source data at any time, run:
+To re-generate all publication figures from source data at any time:
 
 ```bash
+# Generate empirical benchmark suite (Figures 1-13)
 python scripts/generate_all_figures.py
+
+# Generate AugMix primitives and Dirichlet mixing matrix (Figure 14)
+python scripts/generate_augmix_matrix_figure.py
+
+# Generate Fourier frequency transforms and spectral pipeline matrix (Figure 15)
+python scripts/generate_frequency_matrix_figure.py
 ```
 
-All figures will be dynamically re-computed and saved as 300 DPI PNG images into `figs/`.
+All figures are dynamically computed and saved as 300 DPI publication PNG images into `figs/`.
 

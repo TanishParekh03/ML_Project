@@ -191,6 +191,9 @@ def load_class_concepts(csv_path: Optional[str] = None) -> List[Dict]:
                 "symbol_content":  row["symbol_content"].strip(),
             })
 
+    if csv_path is not None and len(rows) > 0:
+        return rows
+
     if len(rows) == 43:
         return rows
 
