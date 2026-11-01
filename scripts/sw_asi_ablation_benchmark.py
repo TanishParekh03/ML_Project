@@ -193,6 +193,7 @@ def find_checkpoint(explicit_path: Optional[str] = None) -> Path:
             return PROJECT_ROOT / p
 
     candidates = [
+        Path("/content/drive/MyDrive/ML_Project_Results/cbm_resnet18/best_cbm_resnet18.pt"),
         Path("/content/drive/MyDrive/Colab Notebooks/best_cbm_resnet18.pt"),
         Path("/content/drive/MyDrive/ML_Project_Checkpoints/cbm_exp4/best_cbm_resnet18.pt"),
         PROJECT_ROOT / "reports/cbm_resnet18/best_cbm_resnet18.pt",
@@ -377,3 +378,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
